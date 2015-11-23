@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class status(models.Model):
     nombre = models.CharField(max_length=11,blank=False)
     descripcion = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=true)
+    fecha_registro = models.DateField(auto_now_add=True)
 
 class Usuarios_permiso(models.Model):
     nombre = models.CharField(max_length=20)
@@ -15,18 +15,18 @@ class Usuarios_permiso(models.Model):
     def __unicode__(self):
         return self.nombre
 
-class Usuario(User)
+class Usuario(User):
     User.add_to_class('nacionalidad', models.CharField(max_length=2,blank=True))
     User.add_to_class('cedula', models.CharField(max_length=21,blank=True))
     User.add_to_class('direccion', models.CharField(max_length=250,blank=True))
     User.add_to_class('telefono', models.CharField(max_length=12,blank=True))
     User.add_to_class('foto',models.ImageField(upload_to='foto_perfil',blank=True))
-    User.add_to_class('tipo_permiso', models.ForeignKey(Usuarios_Permiso))
+    User.add_to_class('tipo_permiso', models.ForeignKey(Usuarios_permiso))
     User.add_to_class('respuesta_seguridad', models.CharField(max_length=60,blank=True))
 
 class Granjas_tipo(models.Model):
     nombre = models.CharField(max_length=255, blank=False)
-    Descripción = models.CharField(max_length=255, blank=True)
+    descripcion = models.CharField(max_length=255, blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
@@ -36,11 +36,24 @@ class Granja(models.Model):
     nombre = models.CharField(max_length=255, blank=False)
     tipo_granja = models.ForeignKey(Granjas_tipo)
     area = models.CharField(max_length=11, blank=False)
-    Ubicación = models.CharField(max_length=255, blank=False)
+    ubicacion = models.CharField(max_length=255, blank=False)
     fecha_registro = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
         return self.nombre 
+
+class Galpone(models.Model):
+    granja = models.ForeignKey(Granja)
+    nombre = models.CharField(max_length=255, blank=False)
+    numero = models.CharField(max_length=255, blank=False)
+    fecha_registro = models.DateField(auto_now_add=True)
+
+class Corrale(models.Model):
+    galpon = models.ForeignKey(Galpone)
+    numero = models.CharField(max_length=255, blank=False)
+    area_disponible = models.CharField(max_length=255, blank=False)
+    capacidad = models.CharField(max_length=255, blank=False)#nro animales
+    fecha_registro = models.DateField(auto_now_add=True)
 
 class Inmunocastracione(models.Model):
     granja = models.ForeignKey(Granja)
@@ -64,7 +77,7 @@ class Alimentos_fabrica(models.Model):
 
 class Alimentos_fase(models.Model):
     nombre = models.CharField(max_length=50,blank=False)
-    Descripción = models.CharField(max_length=255, blank=True)
+    descripcion = models.CharField(max_length=255, blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
@@ -82,7 +95,7 @@ class Alimento(models.Model):
     fabrica = models.ForeignKey(Alimentos_fabrica)
     fase = models.ForeignKey(Alimentos_fase)
     nombre = models.CharField(max_length=255, blank=False)
-    presentación = models.CharField(max_length=255,blank=True)
+    presentacion = models.CharField(max_length=255,blank=True)
     kg_bulto = models.CharField(max_length=11,blank=False)
     tipo_alimento = models.ForeignKey(Alimentos_tipo)
     status = models.ForeignKey(status)
@@ -90,8 +103,8 @@ class Alimento(models.Model):
 
 class patologias_grupo(models.Model):
     nombre = models.CharField(max_length=255,blank=False)
-    Descripción = models.CharField(max_length=255)
-    fecha_registro = models.DateField(auto_now_add=true)
+    descripcion = models.CharField(max_length=255)
+    fecha_registro = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
         return self.nombre
@@ -105,9 +118,9 @@ class patologias(models.Model):
     status = models.ForeignKey(status)
     fecha_registro = models.DateField(auto_now_add=True)
 
-class Medicamentos_laboratorio(models.Model)
+class Medicamentos_laboratorio(models.Model):
     nombre = models.CharField(max_length=255,blank=False)
-    Descripción = models.CharField(max_length=255, blank=True)
+    descripcion = models.CharField(max_length=255, blank=True)
     registro_comercial = models.CharField(max_length=255,blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
@@ -119,14 +132,14 @@ class Medicamentos_tipo(models.Model):
 class Medicamento(models.Model):
     nombre = models.CharField(max_length=255,blank=False)
     Laboratorio = models.ForeignKey(Medicamentos_laboratorio)
-    registro_ica = models.ForeignKey(max_length=255, blank=False)
+    registro_ica = models.CharField(max_length=255, blank=False)
     presentacion = models.CharField(max_length=255, blank=True)
-    tipo = modelsl.ForeignKey(Medicamentos_tipo)
+    tipo = models.ForeignKey(Medicamentos_tipo)
     status = models.ForeignKey(status)
     fecha_registro = models.DateField(auto_now_add=True)
 
 class Medicamentos_indicacione(models.Model):
-    medicamento = models.ForeignKey(medicamento)
+    medicamento = models.ForeignKey(Medicamento)
     indicacion = models.CharField(max_length=255, blank=True)
     descripcion = models.CharField(max_length=255, blank=False)
     fecha_registro = models.DateField(auto_now_add=True)
@@ -137,13 +150,24 @@ class Mano_obras_tipo(models.Model):
     fecha_registro = models.DateField(auto_now_add=True)
 
 class Mano_obra(models.Model):
-    granja = models.ForeignKey(granja)
+    granja = models.ForeignKey(Granja)
     fecha_inicial = models.DateField(auto_now_add=False)
     fecha_final = models.DateField(auto_now_add=False)
     tipo = models.ForeignKey(Mano_obras_tipo)
     detalle = models.CharField(max_length=255,blank=True)
     num_personas_pagadas = models.CharField(max_length=11, blank=False)
     valor_total = models.CharField(max_length=11 ,blank=False)
+
+class personal(models.Model):#pendiente con esta tabla me parece q es redundante
+    nombres = models.CharField(max_length=60, blank=False)
+    apellidos = models.CharField(max_length=60, blank=False)
+    siglas = models.CharField(max_length=4, blank=True)
+    centro_costo = models.CharField(max_length=255, blank=True)
+    fecha_ingreso = models.CharField(max_length=10, blank=False)
+    fecha_retiro = models.CharField(max_length=10, blank=True)
+    status = models.ForeignKey(status)
+    eps = models.CharField(max_length=255, blank=True)
+    contacto = models.CharField(max_length=16, blank=True)
 
 class Insumo(models.Model):
     descripcion = models.CharField(max_length=255, blank=False)
@@ -159,59 +183,63 @@ class Pedidos_tipo(models.Model):
     fecha_registro = models.DateField(auto_now_add=True)
 
 class Pedido(models.Model):
-    granja = models.ForeignKey(granja)
+    granja = models.ForeignKey(Granja)
     tipo = models.ForeignKey(Pedidos_tipo)
     fecha = models.CharField(max_length=10, blank=False)
-    subtotal = models.CharField(max_length=10, blank=False)
-    total = models.CharField()
+    subtotal = models.CharField(max_length=10, blank=True)
+    total = models.CharField(max_length=10,blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
-class pedido_medicamentos_extendido(models.Model):
+class pedidos_medicamentos_extendido(models.Model):
     pedido = models.ForeignKey(Pedido)
     producto = models.CharField(max_length=255,blank=False)
     Cantidad = models.CharField(max_length=12, blank=False)
     valor = models.CharField(max_length=12, blank=False)
 
-class pedido_alimentos_extendido(models.Model):
+class pedidos_alimentos_extendido(models.Model):
     pedido = models.ForeignKey(Pedido)
-    producto = models.CharField(max_length=255,blank=False)
-    Cantidad = models.CharField(max_length=12, blank=False)
+    referencia = models.CharField(max_length=255,blank=True)
+    medicado = models.CharField(max_length=255, blank=True)
+    dosis = models.CharField(max_length=15, blank=True)
+    fecha_recogida = models.CharField(max_length=10, blank=False)
+    observaciones = models.CharField(max_length=255, blank=True)
     valor = models.CharField(max_length=12, blank=False)
 
-CREATE TABLE `13 Pedido de medicamentos e insumos` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Producto` VARCHAR(255),
-    `Cantidad` INTEGER,s
-    `Valor` DOUBLE,
-    `Granja` VARCHAR(255),
-    `Lote` VARCHAR(255)
-) CHARACTER SET 'UTF8';
+class animales_genetica(models.Model):
+    nombre = models.CharField(max_length=100,blank=False)
+    descripcion = models.CharField(max_length=255, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
-CREATE TABLE `28 Pedido Alimento` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha Pedido` DATETIME,
-    `Granja` VARCHAR(255),
-    `Referencia Alimento` VARCHAR(255),
-    `Medicado` VARCHAR(255),
-    `Dosis Medicado (g/ton)` INTEGER,
-    `Cantidad` INTEGER,
-    `Fecha Recogida` DATETIME,
-    `Observaciones` VARCHAR(255)
-) CHARACTER SET 'UTF8';
+class animale(models.Model):
+    granja = models.ForeignKey(Granja)
+    galpon = models.ForeignKey(Galpone)
+    corrales = models.ForeignKey(Corrale)
+    lote = models.CharField(max_length=255, blank=False)
+    edad = models.CharField(max_length=3, blank=False)
+    num_machos = models.CharField(max_length=12, blank=False)
+    num_hembras = models.CharField(max_length=12 , blank=False)
+    peso_total = models.CharField(max_length=16, blank=True)
+    remision = models.CharField(max_length=255, blank=True)
+    valor_lote = models.CharField(max_length=16, blank=False)
+    procedencia = models.CharField(max_length=255, blank=False)
+    genetica = models.ForeignKey(animales_genetica)
+    observaciones = models.CharField(max_length=255, blank=True)
+    status = models.ForeignKey(status)
 
-CREATE TABLE `14 Personal` (
-    `Id` INTEGER PRIMARY KEY,
-    `Nombres y Apellidos` VARCHAR(255),
-    `Siglas` VARCHAR(4),
-    `Centro de costo` VARCHAR(255),
-    `Fecha Ingreso` DATETIME,
-    `Fecha Retiro` DATETIME,
-    `Activo` BOOLEAN,
-    `EPS` VARCHAR(255),
-    `Contacto` DOUBLE
-) CHARACTER SET 'UTF8';
+class mortalidad(models.Model):
+    granja = models.ForeignKey(Granja)
+    galpon = models.ForeignKey(Galpone)
+    corral = models.ForeignKey(Corrale)
+    fecha = models.CharField(max_length=10, blank=False)
+    lote = models.CharField(max_length=255, blank=False)
+    sexo = models.CharField(max_length=255, blank=False)
+    causa = models.CharField(max_length=255, blank=False)
+    cantidad = models.CharField(max_length=255, blank=False)
+    peso = models.CharField(max_length=16, blank=True)
+    destino = models.CharField(max_length=255, blank=True)
 
 
+'''
 CREATE TABLE `15 Compra Medicamentos` (
     `Id` INTEGER PRIMARY KEY,
     `Fecha` DATETIME,
@@ -256,63 +284,6 @@ CREATE TABLE `18 Compra Insumos` (
     `Valor` DOUBLE
 ) CHARACTER SET 'UTF8';
 
-
-CREATE TABLE `19 Ingreso Animales` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Granja` VARCHAR(255),
-    `Lote` VARCHAR(255),
-    `Edad` DOUBLE,
-    `Nro Machos` INTEGER,
-    `Nro Hembras` INTEGER,
-    `Peso Total (Kg)` DOUBLE,
-    `Remisión` VARCHAR(255),
-    `Valor del lote` DOUBLE,
-    `Procedencia` VARCHAR(255),
-    `Genética` VARCHAR(255),
-    `Galpón` VARCHAR(255),
-    `Corrales` INTEGER,
-    `Observaciones` VARCHAR(255),
-    `Activo` BOOLEAN
-) CHARACTER SET 'UTF8';
-
-
-CREATE TABLE `19 Ingreso Animales_Corrales` (
-    `_Corrales` INTEGER,
-    `19 Ingreso Animales_Corrales` INTEGER PRIMARY KEY,
-    `Value` VARCHAR(255)
-) CHARACTER SET 'UTF8';
-
-CREATE TABLE `20 Galpones` (
-    `Id` INTEGER PRIMARY KEY,
-    `Granja` VARCHAR(255),
-    `Nombre/Nro Galpón` VARCHAR(255)
-) CHARACTER SET 'UTF8';
-
-
-CREATE TABLE `21 Corrales` (
-    `Id` INTEGER PRIMARY KEY,
-    `Granja` VARCHAR(255),
-    `Galpón` VARCHAR(255),
-    `Corral Nro` VARCHAR(255),
-    `Área Disponible` DOUBLE,
-    `Capacidad (nro animales)` INTEGER
-) CHARACTER SET 'UTF8';
-
-
-CREATE TABLE `22 Mortalidad` (
-    `Id` INTEGER PRIMARY KEY,
-    `Granja` VARCHAR(255),
-    `Fecha` DATETIME,
-    `Lote` VARCHAR(255),
-    `Sexo` VARCHAR(255),
-    `Causa` VARCHAR(255),
-    `Cantidad` INTEGER,
-    `Peso` INTEGER,
-    `Destino` VARCHAR(255),
-    `Galpon` VARCHAR(255),
-    `corral` VARCHAR(255)
-) CHARACTER SET 'UTF8';
 
 
 CREATE TABLE `23 Ventas` (
@@ -463,7 +434,6 @@ CREATE TABLE `35 Curvas Crecimiento` (
 ) CHARACTER SET 'UTF8';
 
 
-'''
 CREATE TABLE `03 Metas PC` (
     `Id` INTEGER PRIMARY KEY,
     `Granja` INTEGER,
