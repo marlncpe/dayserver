@@ -14,16 +14,16 @@ class Usuarios_permiso(models.Model):
 
     def __unicode__(self):
         return self.nombre
-
+'''
 class Usuario(User):
     User.add_to_class('nacionalidad', models.CharField(max_length=2,blank=True))
     User.add_to_class('cedula', models.CharField(max_length=21,blank=True))
     User.add_to_class('direccion', models.CharField(max_length=250,blank=True))
     User.add_to_class('telefono', models.CharField(max_length=12,blank=True))
-    User.add_to_class('foto',models.ImageField(upload_to='foto_perfil',blank=True))
-    User.add_to_class('tipo_permiso', models.ForeignKey(Usuarios_permiso))
+    #User.add_to_class('foto',models.ImageField(upload_to='foto_perfil',blank=True))
+    #User.add_to_class('tipo_permiso', models.ForeignKey(Usuarios_permiso))
     User.add_to_class('respuesta_seguridad', models.CharField(max_length=60,blank=True))
-
+'''
 class Granjas_tipo(models.Model):
     nombre = models.CharField(max_length=255, blank=False)
     descripcion = models.CharField(max_length=255, blank=True)
