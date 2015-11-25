@@ -25,6 +25,9 @@ class UserProfile(models.Model):
     foto=models.ImageField(upload_to='foto_perfil',blank=True)
     tipo_permiso= models.ForeignKey(Usuarios_permiso)
     respuesta_seguridad= models.CharField(max_length=60,blank=True)
+    persona_contacto = models.CharField(max_length=255, blank=True)
+    dias_pago = models.CharField(max_length=255, blank=True)
+    status = models.ForeignKey(status)
 
 class Granjas_tipo(models.Model):
     nombre = models.CharField(max_length=255, blank=False)
@@ -241,274 +244,207 @@ class mortalidad(models.Model):
     destino = models.CharField(max_length=255, blank=True)
 
 
-'''
-CREATE TABLE `15 Compra Medicamentos` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Granja` VARCHAR(255),
-    `Producto` VARCHAR(255),
-    `Cantidad` INTEGER,
-    `Lote Fabricación` VARCHAR(255),
-    `Fecha Vencimiento` DATETIME,
-    `Retiro` INTEGER,
-    `Valor` DOUBLE
-) CHARACTER SET 'UTF8';
+class Compras_tipo(models.Model):
+    nombre = models.CharField(max_length=10,blank=False)
+    descripcion = models.CharField(max_length=255,blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
-CREATE TABLE `16 Compra Alimento` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Granja` VARCHAR(255),
-    `Referencia` VARCHAR(255),
-    `Cantidad` INTEGER,
-    `Lote Fabricación` VARCHAR(255),
-    `Valor Alimento` DOUBLE,
-    `Valor Total Flete` DOUBLE,
-    `Medicado` VARCHAR(255),
-    `Dosis Medicado (g/ton)` INTEGER,
-    `Valor Medicado` DOUBLE
-) CHARACTER SET 'UTF8';
+class Compra(models.Model):
+    granja = models.ForeignKey(Granja)
+    tipo = models.ForeignKey(Pedidos_tipo)
+    fecha = models.CharField(max_length=10, blank=False)
+    subtotal = models.CharField(max_length=10, blank=True)
+    total = models.CharField(max_length=10,blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
-CREATE TABLE `17 Medicados` (
-    `Id` INTEGER PRIMARY KEY,
-    `Producto` VARCHAR(255),
-    `Principio Activo` VARCHAR(255),
-    `Refencia` VARCHAR(255),
-    `Activo` BOOLEAN
-) CHARACTER SET 'UTF8';
+class Compras_insumo(models.Model):
+    compra = models.ForeignKey(Compra)
+    producto = models.CharField(max_length=255,blank=False)
+    cantidad = models.CharField(max_length=12, blank=False)
+    valor = models.CharField(max_length=12, blank=False)
 
+class Compras_medicamento(models.Model):
+    compra = models.ForeignKey(Compra)
+    producto = models.CharField(max_length=255,blank=False)
+    lote = models.CharField(max_length=255, blank=True)
+    cantidad = models.CharField(max_length=12, blank=False)
+    valor = models.CharField(max_length=12, blank=False)
 
-CREATE TABLE `18 Compra Insumos` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Granja` VARCHAR(255),
-    `Producto` VARCHAR(255),
-    `Cantidad` INTEGER,
-    `Valor` DOUBLE
-) CHARACTER SET 'UTF8';
+class Compras_alimento(models.Model):
+    compra = models.ForeignKey(Compra)
+    referencia = models.CharField(max_length=255,blank=True)
+    lote = models.CharField(max_length=255, blank=True)
+    cantidad = models.CharField(max_length=12, blank=False)
+    valor = models.CharField(max_length=12, blank=False)
+    medicado = models.CharField(max_length=255,blank=True)
+    dosis_medicado = models.CharField(max_length=12, blank=True)
+    valor_medicado = models.CharField(max_length=12, blank=True)
 
+class Medicado(models.Model):
+    producto = models.CharField(max_length=255, blank=True)
+    Principio = models.CharField(max_length=255, blank=True)
+    referencia = models.CharField(max_length=255, blank=True)
+    status = models.ForeignKey(status)
+    fecha_registro = models.DateField(auto_now_add=True)
 
+class Traslados_animale(models.Model):
+    granja = models.ForeignKey(Granja)
+    lote_origen = models.CharField(max_length=255, blank=True)
+    lote_destino = models.CharField(max_length=255, blank=True)
+    nro_animales = models.CharField(max_length=255, blank=True)
+    causa = models.CharField(max_length=255, blank=True)
 
-CREATE TABLE `23 Ventas` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Lote` VARCHAR(255),
-    `Nro Machos` INTEGER,
-    `Nro Hembras` INTEGER,
-    `Tipo` VARCHAR(255),
-    `Peso` INTEGER,
-    `Cliente` VARCHAR(255),
-    `Planta de sacrificio` VARCHAR(255),
-    `Vehiculo que transporta` VARCHAR(255),
-    `Cuarentena` VARCHAR(255),
-    `Precio Total` DOUBLE,
-    `Remisión` VARCHAR(255),
-    `Costo flete` DOUBLE,
-    `Pago` BOOLEAN
-) CHARACTER SET 'UTF8';
+class Traslados_alimento(models.Model):
+    granja = models.ForeignKey(Granja)
+    origen = models.CharField(max_length=255, blank=True)
+    destino = models.CharField(max_length=255, blank=True)
+    referencia = models.CharField(max_length=255, blank=True)
+    cantidad = models.CharField(max_length=16, blank=True)
+    valor_flete = models.CharField(max_length=16, blank=True)
 
+class ventas(models.Model):
+    lote = models.CharField(max_length=255, blank=True)
+    num_machos = models.CharField(max_length=16, blank=True)
+    num_hembras = models.CharField(max_length=16, blank=True)
+    tipo = models.CharField(max_length=255, blank=True)
+    peso = models.CharField(max_length=16, blank=True)
+    cliente = models.OneToOneField(settings.AUTH_USER_MODEL)
+    planta_sacrificio = models.CharField(max_length=255, blank=True)
+    vehiculo = models.CharField(max_length=255, blank=True)
+    cuarentena = models.CharField(max_length=255, blank=True)
+    precio_total = models.CharField(max_length=255, blank=True)
+    remision = models.CharField(max_length=255, blank=True)
+    costos_flete = models.CharField(max_length=255, blank=True)
+    pago = models.ForeignKey(status)
+    fecha_registro = models.DateField(auto_now_add=True)
 
-CREATE TABLE `24 Clientes` (
-    `Id` INTEGER PRIMARY KEY,
-    `Nombre cliente` VARCHAR(255),
-    `Pesona contacto` VARCHAR(255),
-    `Teléfono` DOUBLE,
-    `Días de Pago` INTEGER,
-    `Activo` BOOLEAN
-) CHARACTER SET 'UTF8';
+class Costos_gasto(models.Model):
+    granja = models.ForeignKey(Granja)
+    Galpon = models.ForeignKey(Galpone)
+    lote = models.CharField(max_length=255, blank=True)
+    descripcion = models.CharField(max_length=255, blank=True)
+    amortizacion = models.CharField(max_length=255, blank=True)
+    costos = models.CharField(max_length=255, blank=True)
+    observaciones = models.CharField(max_length=255, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
+class Consumos_tipo(models.Model):
+    nombre = models.CharField(max_length=255, blank=True)
+    descripcion = models.CharField(max_length=255, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
-CREATE TABLE `25 Salida Precebo` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Lote` VARCHAR(255),
-    `Nro Machos` INTEGER,
-    `Nro Hembras` INTEGER,
-    `Peso Total` INTEGER,
-    `Ubicación` VARCHAR(255),
-    `Tipo Salida` VARCHAR(255),
-    `Destino` VARCHAR(255),
-    `Vehículo` VARCHAR(255),
-    `Cuarentena` VARCHAR(255),
-    `Precio Total` DOUBLE,
-    `Remisión` VARCHAR(255),
-    `Valor Flete` DOUBLE
-) CHARACTER SET 'UTF8';
+class Consumo(models.Model):
+    granja = models.ForeignKey(Granja)
+    lote = models.CharField(max_length=255, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
-CREATE TABLE `26 Traslado de Animales` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Granja` VARCHAR(255),
-    `Lote de Origen` VARCHAR(255),
-    `Lote de Destino` VARCHAR(255),
-    `Nro Animales` INTEGER,
-    `Causa` VARCHAR(255)
-) CHARACTER SET 'UTF8';
+class Consumos_farmaco(models.Model):
+    consumo = models.ForeignKey(Consumo)
+    producto = models.CharField(max_length=255, blank=True)
+    cantidad = models.CharField(max_length=255, blank=True)
+    ubicacion = models.CharField(max_length=255, blank=True)
 
-CREATE TABLE `27 Traslado Alimento` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Origen` VARCHAR(255),
-    `Destino` VARCHAR(255),
-    `Referencia Alimento` VARCHAR(255),
-    `Cantidad Transferida` INTEGER,
-    `Valor Flete` DOUBLE
-) CHARACTER SET 'UTF8';
+class Consumos_alimento(models.Model):
+    consumo = models.ForeignKey(Consumo)
+    referencia = models.CharField(max_length=255, blank=True)
+    cantidad = models.CharField(max_length=255, blank=True)
+    ubicacion = models.CharField(max_length=255, blank=True)
 
+class Consumos_insumo(models.Model):
+    consumo = models.ForeignKey(Consumo)
+    producto = models.CharField(max_length=255, blank=True)
+    cantidad = models.CharField(max_length=255, blank=True)
+    ubicacion = models.CharField(max_length=255, blank=True)
 
-CREATE TABLE `29 Costos Gastos` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Descripción` VARCHAR(255),
-    `Depreciación/amortización (meses)` INTEGER,
-    `Costo` DOUBLE,
-    `Granja` VARCHAR(255),
-    `Galpón` VARCHAR(255),
-    `Lote` VARCHAR(255),
-    `Observaciones` VARCHAR(255)
-) CHARACTER SET 'UTF8';
+class Salidas_placebo(models.Model):
+    lote = models.CharField(max_length=255, blank=True)
+    num_machos = models.CharField(max_length=255, blank=True)
+    num_hembras = models.CharField(max_length=255, blank=True)
+    peso_total = models.CharField(max_length=255, blank=True)
+    ubicacion = models.CharField(max_length=255, blank=True)
+    tipo_salida = models.CharField(max_length=255, blank=True)
+    destino = models.CharField(max_length=255, blank=True)
+    vehiculo = models.CharField(max_length=255, blank=True)
+    cuarentena = models.CharField(max_length=255, blank=True)
+    precio_total = models.CharField(max_length=255, blank=True)
+    remision = models.CharField(max_length=255, blank=True)
+    valor_flete = models.CharField(max_length=255, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
+class Tratamientos(models.Model):
+    granja = models.ForeignKey(Granja)
+    Galpon = models.ForeignKey(Galpone)
+    corral = models.ForeignKey(Corrale)
+    causa = models.CharField(max_length=255, blank=True)
+    lote = models.CharField(max_length=255, blank=True)
+    cantidad = models.CharField(max_length=255, blank=True)
+    edad = models.CharField(max_length=255, blank=True)
+    medicamento = models.CharField(max_length=255, blank=True)
+    laboratorio = models.CharField(max_length=255, blank=True)
+    lote_medicamento = models.CharField(max_length=255, blank=True)
+    ICA = models.CharField(max_length=255, blank=True)
+    dosis = models.CharField(max_length=255, blank=True)
+    duracion = models.CharField(max_length=255, blank=True)
+    retiro = models.CharField(max_length=255, blank=True)
+    via_aplicacion = models.CharField(max_length=255, blank=True)
+    observaciones = models.CharField(max_length=255, blank=True)
+    responsable = models.OneToOneField(settings.AUTH_USER_MODEL)
+    fecha_registro = models.DateField(auto_now_add=True)
 
-CREATE TABLE `30 Tipos de Gastos costos` (
-    `Id` INTEGER PRIMARY KEY,
-    `Descripción` VARCHAR(255)
-) CHARACTER SET 'UTF8';
+class Curvas_crecimiento(models.Model):
+    curva = models.CharField(max_length=255, blank=True)
+    edad = models.CharField(max_length=255, blank=True)
+    peso = models.CharField(max_length=255, blank=True)
+    consumo = models.CharField(max_length=255, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
+class Metas_pc(models.Model):
+    granja = models.ForeignKey(Granja)
+    etapa = models.CharField(max_length=255, blank=True)
+    peso_inicial = models.CharField(max_length=255, blank=True)
+    edad_inicial= models.CharField(max_length=255, blank=True)
+    peso_final = models.CharField(max_length=255, blank=True)
+    mortalidad = models.CharField(max_length=255, blank=True)
+    conversion = models.CharField(max_length=255, blank=True)
+    ganacia_peso = models.CharField(max_length=255, blank=True)
+    gdp = models.CharField(max_length=255, blank=True)
+    densidad = models.CharField(max_length=255, blank=True)
+    dias_permanencia = models.CharField(max_length=255, blank=True)
+    consumo_total = models.CharField(max_length=255, blank=True)
+    consumo_animal_diario = models.CharField(max_length=255, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
-CREATE TABLE `31 Consumo Farmacos` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Granja` VARCHAR(255),
-    `Producto` VARCHAR(255),
-    `Cantidad` INTEGER,
-    `Lote` VARCHAR(255),
-    `Ubicacion` VARCHAR(255)
-) CHARACTER SET 'UTF8';
+class Metas_ceba(models.Model):
+    granja = models.ForeignKey(Granja)
+    peso_inicial = models.CharField(max_length=255, blank=True)
+    edad_inicial = models.CharField(max_length=255, blank=True)
+    peso_final = models.CharField(max_length=255, blank=True)
+    mortalidad = models.CharField(max_length=255, blank=True)
+    descarte = models.CharField(max_length=255, blank=True)
+    conversion = models.CharField(max_length=255, blank=True)
+    ganacia_peso = models.CharField(max_length=255, blank=True)
+    gdp = models.CharField(max_length=255, blank=True)
+    densidad = models.CharField(max_length=255, blank=True)
+    dias_permanencia = models.CharField(max_length=255, blank=True)
+    consumo_total = models.CharField(max_length=255, blank=True)
+    consumo_animal_diario = models.CharField(max_length=255, blank=True)
+    costos_produccion = models.CharField(max_length=255, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
+class Metas_destete_finalizacione(models.Model):
+    granja = models.ForeignKey(Granja)
+    peso_inicial = models.CharField(max_length=255, blank=True)
+    edad_inicial = models.CharField(max_length=255, blank=True)
+    peso_final = models.CharField(max_length=255, blank=True)
+    mortalidad = models.CharField(max_length=255, blank=True)
+    descarte = models.CharField(max_length=255, blank=True)
+    conversion = models.CharField(max_length=255, blank=True)
+    ganacia_peso = models.CharField(max_length=255, blank=True)
+    gdp = models.CharField(max_length=255, blank=True)
+    densidad = models.CharField(max_length=255, blank=True)
+    dias_permanencia = models.CharField(max_length=255, blank=True)
+    consumo_total = models.CharField(max_length=255, blank=True)
+    consumo_animal_diario = models.CharField(max_length=255, blank=True)
+    costos_produccion = models.CharField(max_length=255, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
-CREATE TABLE `32 Consumo Alimento` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Granja` VARCHAR(255),
-    `Referencia Alimento` VARCHAR(255),
-    `Cantidad Consumida` INTEGER,
-    `Lote` VARCHAR(255),
-    `Ubicación` VARCHAR(255)
-) CHARACTER SET 'UTF8';
-
-
-CREATE TABLE `33 Consumo Insumos` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Granja` VARCHAR(255),
-    `Producto` VARCHAR(255),
-    `Cantidad` INTEGER,
-    `Lote` VARCHAR(255),
-    `Ubicacion` VARCHAR(255)
-) CHARACTER SET 'UTF8';
-
-CREATE TABLE `34 Tratamientos` (
-    `Id` INTEGER PRIMARY KEY,
-    `Fecha` DATETIME,
-    `Causa` VARCHAR(255),
-    `Lote` VARCHAR(255),
-    `Cantidad` INTEGER,
-    `Galpon` VARCHAR(255),
-    `Corral` VARCHAR(255),
-    `Edad` INTEGER,
-    `Medicamento` VARCHAR(255),
-    `Laboratorio` VARCHAR(255),
-    `Lote de medicamento` VARCHAR(255),
-    `ICA` VARCHAR(255),
-    `Dosis` DATETIME,
-    `Duración` INTEGER,
-    `Retiro` DATETIME,
-    `Via de aplicación` VARCHAR(255),
-    `Observaciones` VARCHAR(255),
-    `Responsable` VARCHAR(255)
-) CHARACTER SET 'UTF8';
-
-CREATE TABLE `35 Curvas Crecimiento` (
-    `Id` INTEGER PRIMARY KEY,
-    `Curva Crecimiento` VARCHAR(255),
-    `Edad` INTEGER,
-    `Peso` DOUBLE,
-    `Consumo` DOUBLE
-) CHARACTER SET 'UTF8';
-
-
-CREATE TABLE `03 Metas PC` (
-    `Id` INTEGER PRIMARY KEY,
-    `Granja` INTEGER,
-    `Etapa` VARCHAR(255),
-    `Peso Inicial` DOUBLE,
-    `Edad Inicial` INTEGER,
-    `Peso Final` DOUBLE,
-    `Mortalidad` DOUBLE,
-    `Conversión` DOUBLE,
-    `Ganancia Peso` DOUBLE,
-    `GDP` DOUBLE,
-    `Densidad` DOUBLE,
-    `Días de permanencia` DOUBLE,
-    `Consumo Total` DOUBLE,
-    `Consumo/Animal/Día` DOUBLE
-) CHARACTER SET 'UTF8';
-
-CREATE TABLE `03 Metas PC_Granja` (
-    `_Granja` INTEGER,
-    `3 Metas PC_Granja` INTEGER PRIMARY KEY,
-    `Value` VARCHAR(255)
-) CHARACTER SET 'UTF8';
-
-
-CREATE TABLE `04 Metas Ceba` (
-    `Id` INTEGER PRIMARY KEY,
-    `Granja` INTEGER,
-    `Peso Inicial` DOUBLE,
-    `Edad Inicial` INTEGER,
-    `Peso Final` DOUBLE,
-    `Mortalidad` DOUBLE,
-    `Descarte` DOUBLE,
-    `Conversión` DOUBLE,
-    `Ganancia Peso` DOUBLE,
-    `GDP` DOUBLE,
-    `Densidad` DOUBLE,
-    `Días de permanencia` DOUBLE,
-    `Consumo Total` DOUBLE,
-    `Consumo/Animal/Día` DOUBLE,
-    `Costo Producción` DOUBLE
-) CHARACTER SET 'UTF8';
-
-
-
-CREATE TABLE `04 Metas Ceba_Granja` (
-    `_Granja` INTEGER,
-    `4 Metas Ceba_Granja` INTEGER PRIMARY KEY,
-    `Value` VARCHAR(255)
-) CHARACTER SET 'UTF8';
-
-
-CREATE TABLE `05 Metas Destete Finalización` (
-    `Id` INTEGER PRIMARY KEY,
-    `Granja` INTEGER,
-    `Peso Inicial` DOUBLE,
-    `Edad Inicial` INTEGER,
-    `Peso Final` DOUBLE,
-    `Mortalidad` DOUBLE,
-    `Descarte` DOUBLE,
-    `Conversión` DOUBLE,
-    `Ganancia Peso` DOUBLE,
-    `GDP` DOUBLE,
-    `Densidad` DOUBLE,
-    `Días de permanencia` DOUBLE,
-    `Consumo Total` DOUBLE,
-    `Consumo/Animal/Día` DOUBLE,
-    `Costo Producción` DOUBLE
-) CHARACTER SET 'UTF8';
-
-
-CREATE TABLE `05 Metas Destete Finalización_Granja` (
-    `_Granja` INTEGER,
-    `Metas Destete Finalización_Granja` INTEGER PRIMARY KEY,
-    `Value` VARCHAR(255)
-) CHARACTER SET 'UTF8';
-'''
