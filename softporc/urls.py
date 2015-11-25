@@ -12,7 +12,7 @@ router = DefaultRouter()
 urlpatterns = patterns('',
 
 url(r'^', include(router.urls)),
-
+url(r'^jet/', include('jet.urls', 'jet')),
 url(r'^admin/', include(admin.site.urls)),
 
 )
