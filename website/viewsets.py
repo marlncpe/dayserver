@@ -26,3 +26,8 @@ class GranjaViewSet(viewsets.ModelViewSet):
     serializer_class = GranjaSerializer
     queryset = Granja.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class GalponeViewSet(viewsets.ModelViewSet):
+    serializer_class = GalponeSerializer
+    queryset = Galpone.objects.all()
+    permission_classes = [permissions.AllowAny,]

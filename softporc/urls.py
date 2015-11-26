@@ -12,6 +12,7 @@ router.register(r'status', StatusViewSet)
 router.register(r'usuarios', UsuarioViewSet)
 router.register(r'granjastipos', Granjas_tipoViewSet)
 router.register(r'granjas', GranjaViewSet)
+router.register(r'galpones', GalponeViewSet)
 
 urlpatterns = patterns('',
 
