@@ -136,3 +136,18 @@ class pedidos_alimentos_extendidoViewSet(viewsets.ModelViewSet):
     serializer_class = pedidos_alimentos_extendidoSerializer
     queryset = pedidos_alimentos_extendido.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class animales_geneticaViewSet(viewsets.ModelViewSet):
+    serializer_class = animales_geneticaSerializer
+    queryset = animales_genetica.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class animaleViewSet(viewsets.ModelViewSet):
+    serializer_class = animaleSerializer
+    queryset = animale.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class mortalidadViewSet(viewsets.ModelViewSet):
+    serializer_class = mortalidadSerializer
+    queryset = mortalidad.objects.all()
+    permission_classes = [permissions.AllowAny,]

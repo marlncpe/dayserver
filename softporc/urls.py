@@ -35,6 +35,9 @@ router.register(r'pedidos', PedidoViewSet)
 router.register(r'pedidosmedicamentos', pedidos_medicamentos_extendidoViewSet)
 router.register(r'pedidosalimentos', pedidos_alimentos_extendidoViewSet)
 
+router.register(r'animalesgenetica', animales_geneticaViewSet)
+router.register(r'animales', animaleViewSet)
+router.register(r'mortalidad', mortalidadViewSet)
 urlpatterns = patterns('',
 
 url(r'^', include(router.urls)),

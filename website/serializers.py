@@ -182,3 +182,25 @@ class pedidos_alimentos_extendidoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = pedidos_alimentos_extendido
 		fields = ('pedido','referencia','medicado','dosis','fecha_recogida','observaciones','valor',)
+
+class animales_geneticaSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = animales_genetica
+		fields = ('nombre','descripcion','fecha_registro',)
+
+class animaleSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	galpon = GalponombreSerializer()
+	corral = CorraleSerializer()
+	genetica = animales_geneticaSerializer()
+	class Meta:
+		model = animale
+		fields = ('granja','galpon','corrales','lote','edad','num_machos','num_hembras','peso_total','remision','valor_lote','procedencia','genetica','observaciones','status',)
+
+class mortalidadSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	galpon = GalponombreSerializer()
+	corral = CorraleSerializer()
+	class Meta:
+		model = mortalidad
+		fields = ('granja','galpon','corral','fecha','lote','sexo','causa','cantidad','peso','destino',)
