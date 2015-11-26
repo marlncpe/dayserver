@@ -30,201 +30,79 @@ class CorraleAdmin(admin.ModelAdmin):
     list_display = ['galpon','numero','area_disponible','capacidad','fecha_registro',]
 
 class InmunocastracioneAdmin(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    rastro = models.CharField(max_length=11,blank=True)
-    periodo_venta = models.CharField(max_length=11,blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['granja','rastro','periodo_venta','fecha_registro',]
 
 class Inmunocastraciones_extendida(admin.ModelAdmin):
-    Inmunocastracion = models.ForeignKey(Inmunocastracione)
-    numero = models.CharField(max_length=50,blank=False)
-    fecha_aplicacion = models.CharField(max_length=10,blank=True) 
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['Inmunocastracion','numero','fecha_aplicacion','fecha_registro',]
 
 class Alimentos_fabrica(admin.ModelAdmin):
-    nombre = models.CharField(max_length=255,blank=False)
-    status = models.ForeignKey(status)
-    fecha_registro = models.DateField(auto_now_add=True)
-
-    def __unicode__(self):
-        return self.nombre
+    list_display = ['nombre','status','fecha_registro',]
 
 class Alimentos_fase(admin.ModelAdmin):
-    nombre = models.CharField(max_length=50,blank=False)
-    descripcion = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
-
-    def __unicode__(self):
-        return self.nombre
+    list_display = ['nombre','descripcion','fecha_registro',]
 
 class Alimentos_tipo(admin.ModelAdmin):
-    nombre = models.CharField(max_length=100, blank=False)
-    descripcion = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
-
-    def __unicode__(self):
-        return self.nombre
+    list_display = ['nombre ','descripcion','fecha_registro',]
 
 class Alimento(admin.ModelAdmin):
-    fabrica = models.ForeignKey(Alimentos_fabrica)
-    fase = models.ForeignKey(Alimentos_fase)
-    nombre = models.CharField(max_length=255, blank=False)
-    presentacion = models.CharField(max_length=255,blank=True)
-    kg_bulto = models.CharField(max_length=11,blank=False)
-    tipo_alimento = models.ForeignKey(Alimentos_tipo)
-    status = models.ForeignKey(status)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['fabrica','fase','nombre','presentacion','kg_bulto','tipo_alimento','status','fecha_registro',]
 
 class patologias_grupo(admin.ModelAdmin):
-    nombre = models.CharField(max_length=255,blank=False)
-    descripcion = models.CharField(max_length=255)
-    fecha_registro = models.DateField(auto_now_add=True)
-
-    def __unicode__(self):
-        return self.nombre
+    list_display = ['nombre','descripcion','fecha_registro',]
 
 class patologias(admin.ModelAdmin):
-    casusa = models.CharField(max_length=255,blank=False)
-    grupo = models.ForeignKey(patologias_grupo)
-    causa_muerte = models.CharField(max_length=50, blank=True)
-    causa_descarte = models.CharField(max_length=50, blank=True) 
-    causa_tratamiento = models.CharField(max_length=50, blank=True)
-    status = models.ForeignKey(status)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['casusa','grupo','causa_muerte','causa_descarte','causa_tratamiento','status','fecha_registro',]
 
 class Medicamentos_laboratorio(admin.ModelAdmin):
-    nombre = models.CharField(max_length=255,blank=False)
-    descripcion = models.CharField(max_length=255, blank=True)
-    registro_comercial = models.CharField(max_length=255,blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['nombre','descripcion','registro_comercial','fecha_registro',]
 
 class Medicamentos_tipo(admin.ModelAdmin):
-    nombre = models.CharField(max_length=100,blank=False)
-    descripcion = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['nombre','descripcion','fecha_registro',]
 
 class Medicamento(admin.ModelAdmin):
-    nombre = models.CharField(max_length=255,blank=False)
-    Laboratorio = models.ForeignKey(Medicamentos_laboratorio)
-    registro_ica = models.CharField(max_length=255, blank=False)
-    presentacion = models.CharField(max_length=255, blank=True)
-    tipo = models.ForeignKey(Medicamentos_tipo)
-    status = models.ForeignKey(status)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['nombre','Laboratorio','registro_ica','presentacion','tipo','status','fecha_registro',]
 
 class Medicamentos_indicacione(admin.ModelAdmin):
-    medicamento = models.ForeignKey(Medicamento)
-    indicacion = models.CharField(max_length=255, blank=True)
-    descripcion = models.CharField(max_length=255, blank=False)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['medicamento','indicacion','descripcion','fecha_registro',]
 
 class Mano_obras_tipo(admin.ModelAdmin):
-    nombre = models.CharField(max_length=100, blank=False)
-    descripcion = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['nombre','descripcion','fecha_registro',]
 
 class Mano_obra(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    fecha_inicial = models.DateField(auto_now_add=False)
-    fecha_final = models.DateField(auto_now_add=False)
-    tipo = models.ForeignKey(Mano_obras_tipo)
-    detalle = models.CharField(max_length=255,blank=True)
-    num_personas_pagadas = models.CharField(max_length=11, blank=False)
-    valor_total = models.CharField(max_length=11 ,blank=False)
+    list_display = ['granja','fecha_inicial','fecha_final','tipo','detalle','num_personas_pagadas','valor_total',]
 
 class personal(admin.ModelAdmin):#pendiente con esta tabla me parece q es redundante
-    nombres = models.CharField(max_length=60, blank=False)
-    apellidos = models.CharField(max_length=60, blank=False)
-    siglas = models.CharField(max_length=4, blank=True)
-    centro_costo = models.CharField(max_length=255, blank=True)
-    fecha_ingreso = models.CharField(max_length=10, blank=False)
-    fecha_retiro = models.CharField(max_length=10, blank=True)
-    status = models.ForeignKey(status)
-    eps = models.CharField(max_length=255, blank=True)
-    contacto = models.CharField(max_length=16, blank=True)
+    list_display = ['nombres','apellidos','siglas','centro_costo','fecha_ingreso','fecha_retiro','status','eps','contacto',]
 
 class Insumo(admin.ModelAdmin):
-    descripcion = models.CharField(max_length=255, blank=False)
-    Marca = models.CharField(max_length=50, blank=True)
-    presentacion = models.CharField(max_length=50, blank=True)
-    unidades_paquetes = models.CharField(max_length=11, blank=False)
-    status = models.ForeignKey(status)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['descripcion','Marca','presentacion','unidades_paquetes','status','fecha_registro',]
 
 class Pedidos_tipo(admin.ModelAdmin):
-    nombre = models.CharField(max_length=10,blank=False)
-    descripcion = models.CharField(max_length=255,blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['nombre','descripcion','fecha_registro',]
 
 class Pedido(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    tipo = models.ForeignKey(Pedidos_tipo)
-    fecha = models.CharField(max_length=10, blank=False)
-    subtotal = models.CharField(max_length=10, blank=True)
-    total = models.CharField(max_length=10,blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['granja','tipo','fecha','subtotal','total','fecha_registro',]
 
 class pedidos_medicamentos_extendido(admin.ModelAdmin):
-    pedido = models.ForeignKey(Pedido)
-    producto = models.CharField(max_length=255,blank=False)
-    Cantidad = models.CharField(max_length=12, blank=False)
-    valor = models.CharField(max_length=12, blank=False)
+    list_display = ['pedido','producto','Cantidad','valor',]
 
 class pedidos_alimentos_extendido(admin.ModelAdmin):
-    pedido = models.ForeignKey(Pedido)
-    referencia = models.CharField(max_length=255,blank=True)
-    medicado = models.CharField(max_length=255, blank=True)
-    dosis = models.CharField(max_length=15, blank=True)
-    fecha_recogida = models.CharField(max_length=10, blank=False)
-    observaciones = models.CharField(max_length=255, blank=True)
-    valor = models.CharField(max_length=12, blank=False)
+    list_display = ['pedido','referencia','medicado','dosis','fecha_recogida','observaciones','valor',]
 
 class animales_genetica(admin.ModelAdmin):
-    nombre = models.CharField(max_length=100,blank=False)
-    descripcion = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['nombre','descripcion','fecha_registro',]
 
 class animale(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    galpon = models.ForeignKey(Galpone)
-    corrales = models.ForeignKey(Corrale)
-    lote = models.CharField(max_length=255, blank=False)
-    edad = models.CharField(max_length=3, blank=False)
-    num_machos = models.CharField(max_length=12, blank=False)
-    num_hembras = models.CharField(max_length=12 , blank=False)
-    peso_total = models.CharField(max_length=16, blank=True)
-    remision = models.CharField(max_length=255, blank=True)
-    valor_lote = models.CharField(max_length=16, blank=False)
-    procedencia = models.CharField(max_length=255, blank=False)
-    genetica = models.ForeignKey(animales_genetica)
-    observaciones = models.CharField(max_length=255, blank=True)
-    status = models.ForeignKey(status)
+    list_display = ['granja','galpon','corrales','lote','edad','num_machos','num_hembras','peso_total','remision','valor_lote','procedencia','genetica','observaciones','status',]
 
 class mortalidad(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    galpon = models.ForeignKey(Galpone)
-    corral = models.ForeignKey(Corrale)
-    fecha = models.CharField(max_length=10, blank=False)
-    lote = models.CharField(max_length=255, blank=False)
-    sexo = models.CharField(max_length=255, blank=False)
-    causa = models.CharField(max_length=255, blank=False)
-    cantidad = models.CharField(max_length=255, blank=False)
-    peso = models.CharField(max_length=16, blank=True)
-    destino = models.CharField(max_length=255, blank=True)
-
+    list_display = ['granja','galpon','corral','fecha','lote','sexo','causa','cantidad','peso','destino',]
 
 class Compras_tipo(admin.ModelAdmin):
-    nombre = models.CharField(max_length=10,blank=False)
-    descripcion = models.CharField(max_length=255,blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['nombre','descripcion','fecha_registro',]
 
 class Compra(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    tipo = models.ForeignKey(Pedidos_tipo)
-    fecha = models.CharField(max_length=10, blank=False)
-    subtotal = models.CharField(max_length=10, blank=True)
-    total = models.CharField(max_length=10,blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['granja','tipo','fecha','subtotal','total','fecha_registro',]
 
 class Compras_insumo(admin.ModelAdmin):
     compra = models.ForeignKey(Compra)
@@ -233,189 +111,58 @@ class Compras_insumo(admin.ModelAdmin):
     valor = models.CharField(max_length=12, blank=False)
 
 class Compras_medicamento(admin.ModelAdmin):
-    compra = models.ForeignKey(Compra)
-    producto = models.CharField(max_length=255,blank=False)
-    lote = models.CharField(max_length=255, blank=True)
-    cantidad = models.CharField(max_length=12, blank=False)
-    valor = models.CharField(max_length=12, blank=False)
+    list_display = ['compra','producto','lote','cantidad','valor',]
 
 class Compras_alimento(admin.ModelAdmin):
-    compra = models.ForeignKey(Compra)
-    referencia = models.CharField(max_length=255,blank=True)
-    lote = models.CharField(max_length=255, blank=True)
-    cantidad = models.CharField(max_length=12, blank=False)
-    valor = models.CharField(max_length=12, blank=False)
-    medicado = models.CharField(max_length=255,blank=True)
-    dosis_medicado = models.CharField(max_length=12, blank=True)
-    valor_medicado = models.CharField(max_length=12, blank=True)
+    list_display = ['compra','referencia','lote','cantidad','valor','medicado','dosis_medicado','valor_medicado',]
 
 class Medicado(admin.ModelAdmin):
-    producto = models.CharField(max_length=255, blank=True)
-    Principio = models.CharField(max_length=255, blank=True)
-    referencia = models.CharField(max_length=255, blank=True)
-    status = models.ForeignKey(status)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['producto','Principio','referencia','status','fecha_registro',]
 
 class Traslados_animale(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    lote_origen = models.CharField(max_length=255, blank=True)
-    lote_destino = models.CharField(max_length=255, blank=True)
-    nro_animales = models.CharField(max_length=255, blank=True)
-    causa = models.CharField(max_length=255, blank=True)
+    list_display = ['granja','lote_origen','lote_destino','nro_animales','causa',]
 
 class Traslados_alimento(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    origen = models.CharField(max_length=255, blank=True)
-    destino = models.CharField(max_length=255, blank=True)
-    referencia = models.CharField(max_length=255, blank=True)
-    cantidad = models.CharField(max_length=16, blank=True)
-    valor_flete = models.CharField(max_length=16, blank=True)
+    list_display = ['granja','origen','destino','referencia','cantidad','valor_flete',]
 
 class ventas(admin.ModelAdmin):
-    lote = models.CharField(max_length=255, blank=True)
-    num_machos = models.CharField(max_length=16, blank=True)
-    num_hembras = models.CharField(max_length=16, blank=True)
-    tipo = models.CharField(max_length=255, blank=True)
-    peso = models.CharField(max_length=16, blank=True)
-    cliente = models.OneToOneField(settings.AUTH_USER_MODEL)
-    planta_sacrificio = models.CharField(max_length=255, blank=True)
-    vehiculo = models.CharField(max_length=255, blank=True)
-    cuarentena = models.CharField(max_length=255, blank=True)
-    precio_total = models.CharField(max_length=255, blank=True)
-    remision = models.CharField(max_length=255, blank=True)
-    costos_flete = models.CharField(max_length=255, blank=True)
-    pago = models.ForeignKey(status)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['lote','num_machos','num_hembras','tipo','peso','cliente','planta_sacrificio','vehiculo','cuarentena','precio_total','remision','costos_flete','pago','fecha_registro',]
 
 class Costos_gasto(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    Galpon = models.ForeignKey(Galpone)
-    lote = models.CharField(max_length=255, blank=True)
-    descripcion = models.CharField(max_length=255, blank=True)
-    amortizacion = models.CharField(max_length=255, blank=True)
-    costos = models.CharField(max_length=255, blank=True)
-    observaciones = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['granja','Galpon','lote','descripcion','amortizacion','costos','observaciones','fecha_registro',] 
 
 class Consumos_tipo(admin.ModelAdmin):
-    nombre = models.CharField(max_length=255, blank=True)
-    descripcion = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['nombre','descripcion','fecha_registro',] 
 
 class Consumo(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    lote = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['granja','lote','fecha_registro',] 
 
 class Consumos_farmaco(admin.ModelAdmin):
-    consumo = models.ForeignKey(Consumo)
-    producto = models.CharField(max_length=255, blank=True)
-    cantidad = models.CharField(max_length=255, blank=True)
-    ubicacion = models.CharField(max_length=255, blank=True)
+    list_display = ['consumo','producto','cantidad','ubicacion',] 
 
 class Consumos_alimento(admin.ModelAdmin):
-    consumo = models.ForeignKey(Consumo)
-    referencia = models.CharField(max_length=255, blank=True)
-    cantidad = models.CharField(max_length=255, blank=True)
-    ubicacion = models.CharField(max_length=255, blank=True)
+    list_display = ['consumo','referencia','cantidad','ubicacion',] 
 
 class Consumos_insumo(admin.ModelAdmin):
-    consumo = models.ForeignKey(Consumo)
-    producto = models.CharField(max_length=255, blank=True)
-    cantidad = models.CharField(max_length=255, blank=True)
-    ubicacion = models.CharField(max_length=255, blank=True)
+    list_display = ['consumo','producto','cantidad','ubicacion',] 
 
 class Salidas_placebo(admin.ModelAdmin):
-    lote = models.CharField(max_length=255, blank=True)
-    num_machos = models.CharField(max_length=255, blank=True)
-    num_hembras = models.CharField(max_length=255, blank=True)
-    peso_total = models.CharField(max_length=255, blank=True)
-    ubicacion = models.CharField(max_length=255, blank=True)
-    tipo_salida = models.CharField(max_length=255, blank=True)
-    destino = models.CharField(max_length=255, blank=True)
-    vehiculo = models.CharField(max_length=255, blank=True)
-    cuarentena = models.CharField(max_length=255, blank=True)
-    precio_total = models.CharField(max_length=255, blank=True)
-    remision = models.CharField(max_length=255, blank=True)
-    valor_flete = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['lote','num_machos','num_hembras','peso_total','ubicacion','tipo_salida','destino','vehiculo','cuarentena','precio_total','remision','valor_flete','fecha_registro',] 
 
 class Tratamientos(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    Galpon = models.ForeignKey(Galpone)
-    corral = models.ForeignKey(Corrale)
-    causa = models.CharField(max_length=255, blank=True)
-    lote = models.CharField(max_length=255, blank=True)
-    cantidad = models.CharField(max_length=255, blank=True)
-    edad = models.CharField(max_length=255, blank=True)
-    medicamento = models.CharField(max_length=255, blank=True)
-    laboratorio = models.CharField(max_length=255, blank=True)
-    lote_medicamento = models.CharField(max_length=255, blank=True)
-    ICA = models.CharField(max_length=255, blank=True)
-    dosis = models.CharField(max_length=255, blank=True)
-    duracion = models.CharField(max_length=255, blank=True)
-    retiro = models.CharField(max_length=255, blank=True)
-    via_aplicacion = models.CharField(max_length=255, blank=True)
-    observaciones = models.CharField(max_length=255, blank=True)
-    responsable = models.OneToOneField(settings.AUTH_USER_MODEL)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['granja','Galpon','corral','causa','lote','cantidad','edad','medicamento','laboratorio','lote_medicamento','ICA','dosis','duracion','retiro','via_aplicacion','observaciones','responsable','fecha_registro',] 
 
 class Curvas_crecimiento(admin.ModelAdmin):
-    curva = models.CharField(max_length=255, blank=True)
-    edad = models.CharField(max_length=255, blank=True)
-    peso = models.CharField(max_length=255, blank=True)
-    consumo = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['curva','edad','peso','consumo','fecha_registro',] 
 
 class Metas_pc(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    etapa = models.CharField(max_length=255, blank=True)
-    peso_inicial = models.CharField(max_length=255, blank=True)
-    edad_inicial= models.CharField(max_length=255, blank=True)
-    peso_final = models.CharField(max_length=255, blank=True)
-    mortalidad = models.CharField(max_length=255, blank=True)
-    conversion = models.CharField(max_length=255, blank=True)
-    ganacia_peso = models.CharField(max_length=255, blank=True)
-    gdp = models.CharField(max_length=255, blank=True)
-    densidad = models.CharField(max_length=255, blank=True)
-    dias_permanencia = models.CharField(max_length=255, blank=True)
-    consumo_total = models.CharField(max_length=255, blank=True)
-    consumo_animal_diario = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['granja','etapa','peso_inicial','edad_inicial','peso_final','mortalidad','conversion','ganacia_peso','gdp','densidad','dias_permanencia'.'consumo_total','consumo_animal_diario','fecha_registro',] 
 
 class Metas_ceba(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    peso_inicial = models.CharField(max_length=255, blank=True)
-    edad_inicial = models.CharField(max_length=255, blank=True)
-    peso_final = models.CharField(max_length=255, blank=True)
-    mortalidad = models.CharField(max_length=255, blank=True)
-    descarte = models.CharField(max_length=255, blank=True)
-    conversion = models.CharField(max_length=255, blank=True)
-    ganacia_peso = models.CharField(max_length=255, blank=True)
-    gdp = models.CharField(max_length=255, blank=True)
-    densidad = models.CharField(max_length=255, blank=True)
-    dias_permanencia = models.CharField(max_length=255, blank=True)
-    consumo_total = models.CharField(max_length=255, blank=True)
-    consumo_animal_diario = models.CharField(max_length=255, blank=True)
-    costos_produccion = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['granja','peso_inicial','edad_inicial','peso_final','mortalidad','descarte','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','costos_produccion','fecha_registro',] 
 
 class Metas_destete_finalizacione(admin.ModelAdmin):
-    granja = models.ForeignKey(Granja)
-    peso_inicial = models.CharField(max_length=255, blank=True)
-    edad_inicial = models.CharField(max_length=255, blank=True)
-    peso_final = models.CharField(max_length=255, blank=True)
-    mortalidad = models.CharField(max_length=255, blank=True)
-    descarte = models.CharField(max_length=255, blank=True)
-    conversion = models.CharField(max_length=255, blank=True)
-    ganacia_peso = models.CharField(max_length=255, blank=True)
-    gdp = models.CharField(max_length=255, blank=True)
-    densidad = models.CharField(max_length=255, blank=True)
-    dias_permanencia = models.CharField(max_length=255, blank=True)
-    consumo_total = models.CharField(max_length=255, blank=True)
-    consumo_animal_diario = models.CharField(max_length=255, blank=True)
-    costos_produccion = models.CharField(max_length=255, blank=True)
-    fecha_registro = models.DateField(auto_now_add=True)
+    list_display = ['granja','peso_inicial','edad_inicial','peso_final','mortalidad','descarte','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','costos_produccion','fecha_registro',] 
 
 
 
