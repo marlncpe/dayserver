@@ -54,3 +54,17 @@ class GalponeSerializer(serializers.ModelSerializer):
     class Meta:
 		model = Galpone
 		fields = ('granja','nombre','numero','fecha_registro',)
+
+#B clase solo para extraer nombre del galpon
+class GalponombreSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	class Meta:
+		model = Galpone
+		fields = ('granja','nombre',)
+#End
+
+class CorraleSerializer(serializers.ModelSerializer):
+	galpon = GalponombreSerializer()
+	class Meta:
+		model = Corrale
+		fields = ('galpon','numero','area_disponible','capacidad','fecha_registro',)

@@ -31,3 +31,8 @@ class GalponeViewSet(viewsets.ModelViewSet):
     serializer_class = GalponeSerializer
     queryset = Galpone.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class CorraleViewSet(viewsets.ModelViewSet):
+    serializer_class = CorraleSerializer
+    queryset = Corrale.objects.all()
+    permission_classes = [permissions.AllowAny,]
