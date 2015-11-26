@@ -151,3 +151,28 @@ class mortalidadViewSet(viewsets.ModelViewSet):
     serializer_class = mortalidadSerializer
     queryset = mortalidad.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class Compras_tipoViewSet(viewsets.ModelViewSet):
+    serializer_class = Compras_tipoSerializer
+    queryset = Compras_tipo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class CompraViewSet(viewsets.ModelViewSet):
+    serializer_class = CompraSerializer
+    queryset = Compra.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Compras_insumoViewSet(viewsets.ModelViewSet):
+    serializer_class = Compras_insumoSerializer
+    queryset = Compras_insumo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Compras_medicamentoViewSet(viewsets.ModelViewSet):
+    serializer_class = Compras_medicamentoSerializer
+    queryset = Compras_medicamento.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Compras_alimentoViewSet(viewsets.ModelViewSet):
+    serializer_class = Compras_alimentoSerializer
+    queryset = Compras_alimento.objects.all()
+    permission_classes = [permissions.AllowAny,]

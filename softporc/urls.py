@@ -34,10 +34,15 @@ router.register(r'pedidostipo', Pedidos_tipoViewSet)
 router.register(r'pedidos', PedidoViewSet)
 router.register(r'pedidosmedicamentos', pedidos_medicamentos_extendidoViewSet)
 router.register(r'pedidosalimentos', pedidos_alimentos_extendidoViewSet)
-
 router.register(r'animalesgenetica', animales_geneticaViewSet)
 router.register(r'animales', animaleViewSet)
 router.register(r'mortalidad', mortalidadViewSet)
+router.register(r'comprastipos', Compras_tipoViewSet)
+router.register(r'compras', CompraViewSet)
+router.register(r'comprasinsumos', Compras_insumoViewSet)
+router.register(r'comprasmedicamentos', Compras_medicamentoViewSet)
+router.register(r'comprasalimentos', Compras_alimentoViewSet)
+
 urlpatterns = patterns('',
 
 url(r'^', include(router.urls)),

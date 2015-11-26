@@ -204,3 +204,33 @@ class mortalidadSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = mortalidad
 		fields = ('granja','galpon','corral','fecha','lote','sexo','causa','cantidad','peso','destino',)
+
+class Compras_tipoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Compras_tipo
+		fields = ('nombre','descripcion','fecha_registro',)
+
+class CompraSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	tipo = Compras_tipoSerializer()
+	class Meta:
+		model = Compra
+		fields = ('granja','tipo','fecha','subtotal','total','fecha_registro',)
+
+class Compras_insumoSerializer(serializers.ModelSerializer):
+	compra = CompraSerializer()
+	class Meta:
+		model = Compras_insumo
+		fields = ('compra','producto','cantidad','valor',)
+
+class Compras_medicamentoSerializer(serializers.ModelSerializer):
+	compra = CompraSerializer()
+	class Meta:
+		model = Compras_medicamento
+		fields = ('compra','producto','lote','cantidad','valor',)
+
+class Compras_alimentoSerializer(serializers.ModelSerializer):
+	compra = CompraSerializer()
+	class Meta:
+		model = Compras_alimento
+		fields = ('compra','referencia','lote','cantidad','valor','medicado','dosis_medicado','valor_medicado',)
