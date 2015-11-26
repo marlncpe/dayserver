@@ -13,8 +13,8 @@ class UsuarioSerializer(serializers.ModelSerializer):
         permission_classes = (IsAdminUser,)
 
     def create(self, validated_data):
-        user = User(email=validated_data['email'], username=validated_data['username'])
-        user.set_password(validated_data['password'])
+        user = User(email=validated_data('email'), username=validated_data('username'))
+        user.set_password(validated_data('password'))
         user.save()
         return user
 
@@ -73,7 +73,7 @@ class InmunocastracioneSerializer(serializers.ModelSerializer):
 	granja = GranjanombreSerializer()
 	class Meta:
 		model = Inmunocastracione
-		fields = ['granja','rastro','periodo_venta','fecha_registro',]
+		fields = ('granja','rastro','periodo_venta','fecha_registro',)
 
 class Inmunocastraciones_extendidaSerializer(serializers.ModelSerializer):
 	Inmunocastracion = InmunocastracioneSerializer()
@@ -298,3 +298,34 @@ class Salidas_placeboSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Salidas_placebo
 		fields = ('lote','num_machos','num_hembras','peso_total','ubicacion','tipo_salida','destino','vehiculo','cuarentena','precio_total','remision','valor_flete','fecha_registro',)
+
+class TratamientosSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	galpon = GalponombreSerializer()
+	corral = CorraleSerializer()
+	class Meta:
+		model = Tratamientos
+		fields = ('granja','Galpon','corral','causa','lote','cantidad','edad','medicamento','laboratorio','lote_medicamento','ICA','dosis','duracion','retiro','via_aplicacion','observaciones','responsable','fecha_registro',) 
+
+class Curvas_crecimientoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Curvas_crecimiento
+		fields = ('curva','edad','peso','consumo','fecha_registro',) 
+
+class Metas_pcSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	class Meta:
+		model = Metas_pc
+		fields = ('granja','etapa','peso_inicial','edad_inicial','peso_final','mortalidad','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','fecha_registro',) 
+
+class Metas_cebaSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	class Meta:
+		model = Metas_ceba
+		fields = ('granja','peso_inicial','edad_inicial','peso_final','mortalidad','descarte','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','costos_produccion','fecha_registro',) 
+
+class Metas_destete_finalizacioneSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	class Meta:
+		model = Metas_destete_finalizacione
+		fields = ('granja','peso_inicial','edad_inicial','peso_final','mortalidad','descarte','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','costos_produccion','fecha_registro',) 

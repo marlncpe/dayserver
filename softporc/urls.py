@@ -53,6 +53,11 @@ router.register(r'consumo/insumo', Consumos_insumoViewSet)
 router.register(r'consumo/alimento', Consumos_alimentoViewSet)
 router.register(r'consumo', ConsumoViewSet)
 router.register(r'salidas/placebo', Salidas_placeboViewSet)
+router.register(r'tratamientos', TratamientosViewSet)
+router.register(r'curvas/crecimiento', Curvas_crecimientoViewSet)
+router.register(r'metas/pc', Metas_pcViewSet)
+router.register(r'metas/ceba', Metas_cebaViewSet)
+router.register(r'metas/destete', Metas_destete_finalizacioneViewSet)
 
 urlpatterns = patterns('',
 

@@ -231,3 +231,28 @@ class Salidas_placeboViewSet(viewsets.ModelViewSet):
     serializer_class = Salidas_placeboSerializer
     queryset = Salidas_placebo.objects.all()
     permission_classes = [permissions.AllowAny,]    
+
+class TratamientosViewSet(viewsets.ModelViewSet):
+    serializer_class = TratamientosSerializer
+    queryset = Tratamientos.objects.all()
+    permission_classes = [permissions.AllowAny,]    
+
+class Curvas_crecimientoViewSet(viewsets.ModelViewSet):
+    serializer_class = Curvas_crecimientoSerializer
+    queryset = Curvas_crecimiento.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Metas_pcViewSet(viewsets.ModelViewSet):
+    serializer_class = Metas_pcSerializer
+    queryset = Metas_pc.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Metas_cebaViewSet(viewsets.ModelViewSet):
+    serializer_class = Metas_cebaSerializer
+    queryset = Metas_ceba.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Metas_destete_finalizacioneViewSet(viewsets.ModelViewSet):
+    serializer_class = Metas_destete_finalizacioneSerializer
+    queryset = Metas_destete_finalizacione.objects.all()
+    permission_classes = [permissions.AllowAny,]
