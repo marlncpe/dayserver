@@ -201,3 +201,33 @@ class Costos_gastoViewSet(viewsets.ModelViewSet):
     serializer_class = Costos_gastoSerializer
     queryset = Costos_gasto.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class Consumos_tipoViewSet(viewsets.ModelViewSet):
+    serializer_class = Consumos_tipoSerializer
+    queryset = Consumos_tipo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class ConsumoViewSet(viewsets.ModelViewSet):
+    serializer_class = ConsumoSerializer
+    queryset = Consumo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Consumos_farmacoViewSet(viewsets.ModelViewSet):
+    serializer_class = Consumos_farmacoSerializer
+    queryset = Consumos_farmaco.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Consumos_alimentoViewSet(viewsets.ModelViewSet):
+    serializer_class = Consumos_alimentoSerializer
+    queryset = Consumos_alimento.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Consumos_insumoViewSet(viewsets.ModelViewSet):
+    serializer_class = Consumos_insumoSerializer
+    queryset = Consumos_insumo.objects.all()
+    permission_classes = [permissions.AllowAny,]    
+
+class Salidas_placeboViewSet(viewsets.ModelViewSet):
+    serializer_class = Salidas_placeboSerializer
+    queryset = Salidas_placebo.objects.all()
+    permission_classes = [permissions.AllowAny,]    

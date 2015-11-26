@@ -132,7 +132,7 @@ class Consumos_tipoAdmin(admin.ModelAdmin):
     list_display = ['nombre','descripcion','fecha_registro',] 
 
 class ConsumoAdmin(admin.ModelAdmin):
-    list_display = ['granja','lote','fecha_registro',] 
+    list_display = ['granja','lote','tipo','fecha_registro',] 
 
 class Consumos_farmacoAdmin(admin.ModelAdmin):
     list_display = ['consumo','producto','cantidad','ubicacion',] 

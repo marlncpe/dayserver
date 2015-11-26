@@ -335,6 +335,7 @@ class Consumos_tipo(models.Model):
 
 class Consumo(models.Model):
     granja = models.ForeignKey(Granja)
+    tipo = models.ForeignKey(Consumos_tipo)
     lote = models.CharField(max_length=255, blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 

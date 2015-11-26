@@ -264,3 +264,37 @@ class Costos_gastoSerializer(serializers.ModelSerializer):
 		model = Costos_gasto
 		fields = ('granja','Galpon','lote','descripcion','amortizacion','costos','observaciones','fecha_registro',)
 
+class Consumos_tipoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Consumos_tipo
+		fields = ('nombre','descripcion','fecha_registro',)
+
+class ConsumoSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	tipo = Consumos_tipoSerializer()
+	class Meta:
+		model = Consumo
+		fields = ('granja','lote','tipo','fecha_registro',)
+
+class Consumos_farmacoSerializer(serializers.ModelSerializer):
+	consumo = ConsumoSerializer()
+	class Meta:
+		model = Consumos_farmaco
+		fields = ('consumo','producto','cantidad','ubicacion',) 
+
+class Consumos_alimentoSerializer(serializers.ModelSerializer):
+	consumo = ConsumoSerializer()
+	class Meta:
+		model = Consumos_alimento
+		fields = ('consumo','referencia','cantidad','ubicacion',) 
+
+class Consumos_insumoSerializer(serializers.ModelSerializer):
+	consumo = ConsumoSerializer()
+	class Meta:
+		model = Consumos_insumo
+		fields = ('consumo','producto','cantidad','ubicacion',) 
+
+class Salidas_placeboSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Salidas_placebo
+		fields = ('lote','num_machos','num_hembras','peso_total','ubicacion','tipo_salida','destino','vehiculo','cuarentena','precio_total','remision','valor_flete','fecha_registro',)
