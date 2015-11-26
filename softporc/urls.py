@@ -20,6 +20,8 @@ router.register(r'alimentosfabrica', Alimentos_fabricaViewSet)
 router.register(r'alimentosfase', Alimentos_faseViewSet)
 router.register(r'alimentostipo', Alimentos_tipoViewSet)
 router.register(r'alimentos', AlimentoViewSet)
+router.register(r'patologiasgrupo', Patologias_grupoViewSet)
+router.register(r'patologias', PatologiasViewSet)
 
 urlpatterns = patterns('',
 

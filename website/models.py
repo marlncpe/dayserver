@@ -106,7 +106,7 @@ class Alimento(models.Model):
     status = models.ForeignKey(Status)
     fecha_registro = models.DateField(auto_now_add=True)
 
-class patologias_grupo(models.Model):
+class Patologias_grupo(models.Model):
     nombre = models.CharField(max_length=255,blank=False)
     descripcion = models.CharField(max_length=255)
     fecha_registro = models.DateField(auto_now_add=True)
@@ -114,9 +114,9 @@ class patologias_grupo(models.Model):
     def __unicode__(self):
         return self.nombre
 
-class patologias(models.Model):
+class Patologias(models.Model):
     casusa = models.CharField(max_length=255,blank=False)
-    grupo = models.ForeignKey(patologias_grupo)
+    grupo = models.ForeignKey(Patologias_grupo)
     causa_muerte = models.CharField(max_length=50, blank=True)
     causa_descarte = models.CharField(max_length=50, blank=True) 
     causa_tratamiento = models.CharField(max_length=50, blank=True)

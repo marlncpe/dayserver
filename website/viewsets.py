@@ -66,3 +66,13 @@ class AlimentoViewSet(viewsets.ModelViewSet):
     serializer_class = AlimentoSerializer
     queryset = Alimento.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class Patologias_grupoViewSet(viewsets.ModelViewSet):
+    serializer_class = Patologias_grupoSerializer
+    queryset = Patologias_grupo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class PatologiasViewSet(viewsets.ModelViewSet):
+    serializer_class = PatologiasSerializer
+    queryset = Patologias.objects.all()
+    permission_classes = [permissions.AllowAny,]

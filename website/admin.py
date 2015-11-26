@@ -47,10 +47,10 @@ class Alimentos_tipoAdmin(admin.ModelAdmin):
 class AlimentoAdmin(admin.ModelAdmin):
     list_display = ['fabrica','fase','nombre','presentacion','kg_bulto','tipo_alimento','status','fecha_registro',]
 
-class patologias_grupoAdmin(admin.ModelAdmin):
+class Patologias_grupoAdmin(admin.ModelAdmin):
     list_display = ['nombre','descripcion','fecha_registro',]
 
-class patologiasAdmin(admin.ModelAdmin):
+class PatologiasAdmin(admin.ModelAdmin):
     list_display = ['casusa','grupo','causa_muerte','causa_descarte','causa_tratamiento','status','fecha_registro',]
 
 class Medicamentos_laboratorioAdmin(admin.ModelAdmin):
@@ -175,8 +175,8 @@ admin.site.register(Alimentos_fabrica, Alimentos_fabricaAdmin)
 admin.site.register(Alimentos_fase,Alimentos_faseAdmin)
 admin.site.register(Alimentos_tipo,Alimentos_tipoAdmin)
 admin.site.register(Alimento,AlimentoAdmin)
-admin.site.register(patologias_grupo,patologias_grupoAdmin)
-admin.site.register(patologias,patologiasAdmin)
+admin.site.register(Patologias_grupo,Patologias_grupoAdmin)
+admin.site.register(Patologias,PatologiasAdmin)
 admin.site.register(Medicamentos_laboratorio,Medicamentos_laboratorioAdmin)
 admin.site.register(Medicamentos_tipo,Medicamentos_tipoAdmin)
 admin.site.register(Medicamento,MedicamentoAdmin)

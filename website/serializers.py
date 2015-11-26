@@ -103,3 +103,15 @@ class AlimentoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Alimento
 		fields = ('fabrica','fase','tipo_alimento','nombre','presentacion','kg_bulto','status','fecha_registro',)
+
+class Patologias_grupoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Patologias_grupo
+		fields = ('nombre','descripcion','fecha_registro',)
+
+class PatologiasSerializer(serializers.ModelSerializer):
+	grupo = Patologias_grupoSerializer()
+	class Meta:
+		model = Patologias
+		fields = ('casusa','grupo','causa_muerte','causa_descarte','causa_tratamiento','status','fecha_registro',)
+
