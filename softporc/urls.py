@@ -44,6 +44,11 @@ router.register(r'comprasmedicamentos', Compras_medicamentoViewSet)
 router.register(r'comprasalimentos', Compras_alimentoViewSet)
 router.register(r'medicado', MedicadoViewSet)
 
+router.register(r'traslado/alimentos', Traslados_alimentoViewSet)
+router.register(r'traslado/animales', Traslados_animaleViewSet)
+router.register(r'ventas', ventasViewSet)
+router.register(r'costos', Costos_gastoViewSet)
+
 urlpatterns = patterns('',
 
 url(r'^', include(router.urls)),

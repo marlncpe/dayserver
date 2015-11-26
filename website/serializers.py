@@ -235,7 +235,32 @@ class Compras_alimentoSerializer(serializers.ModelSerializer):
 		model = Compras_alimento
 		fields = ('compra','referencia','lote','cantidad','valor','medicado','dosis_medicado','valor_medicado',)
 
-class MedicadoAdmin(admin.ModelAdmin):
+class MedicadoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Medicado
 		fields = ('producto','Principio','referencia','status','fecha_registro',)
+
+class Traslados_animaleSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	class Meta:
+		model = Traslados_animale
+		fields = ('granja','lote_origen','lote_destino','nro_animales','causa',)
+
+class Traslados_alimentoSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	class Meta:
+		model = Traslados_alimento
+		fields = ('granja','origen','destino','referencia','cantidad','valor_flete',)
+
+class ventasSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = ventas
+		fields = ('lote','num_machos','num_hembras','tipo','peso','cliente','planta_sacrificio','vehiculo','cuarentena','precio_total','remision','costos_flete','pago','fecha_registro',)
+
+class Costos_gastoSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	Galpon = GalponombreSerializer()
+	class Meta:
+		model = Costos_gasto
+		fields = ('granja','Galpon','lote','descripcion','amortizacion','costos','observaciones','fecha_registro',)
+

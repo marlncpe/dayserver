@@ -181,4 +181,23 @@ class MedicadoViewSet(viewsets.ModelViewSet):
     serializer_class = MedicadoSerializer
     queryset = Medicado.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class Traslados_animaleViewSet(viewsets.ModelViewSet):
+    serializer_class = Traslados_animaleSerializer
+    queryset = Traslados_animale.objects.all()
+    permission_classes = [permissions.AllowAny,]
     
+class Traslados_alimentoViewSet(viewsets.ModelViewSet):
+    serializer_class = Traslados_alimentoSerializer
+    queryset = Traslados_alimento.objects.all()
+    permission_classes = [permissions.AllowAny,]
+    
+class ventasViewSet(viewsets.ModelViewSet):
+    serializer_class = ventasSerializer
+    queryset = ventas.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Costos_gastoViewSet(viewsets.ModelViewSet):
+    serializer_class = Costos_gastoSerializer
+    queryset = Costos_gasto.objects.all()
+    permission_classes = [permissions.AllowAny,]
