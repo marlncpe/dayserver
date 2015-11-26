@@ -117,3 +117,22 @@ class InsumoViewSet(viewsets.ModelViewSet):
     queryset = Insumo.objects.all()
     permission_classes = [permissions.AllowAny,]
     
+class Pedidos_tipoViewSet(viewsets.ModelViewSet):
+    serializer_class = Pedidos_tipoSerializer
+    queryset = Pedidos_tipo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class PedidoViewSet(viewsets.ModelViewSet):
+    serializer_class = PedidoSerializer
+    queryset = Pedido.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class pedidos_medicamentos_extendidoViewSet(viewsets.ModelViewSet):
+    serializer_class = pedidos_medicamentos_extendidoSerializer
+    queryset = pedidos_medicamentos_extendido.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class pedidos_alimentos_extendidoViewSet(viewsets.ModelViewSet):
+    serializer_class = pedidos_alimentos_extendidoSerializer
+    queryset = pedidos_alimentos_extendido.objects.all()
+    permission_classes = [permissions.AllowAny,]

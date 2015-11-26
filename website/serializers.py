@@ -158,3 +158,27 @@ class InsumoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Insumo
 		fields = ['descripcion','Marca','presentacion','unidades_paquetes','status','fecha_registro',]
+
+class Pedidos_tipoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Pedidos_tipo
+		fields = ['nombre','descripcion','fecha_registro',]
+
+class PedidoSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	tipo = Pedidos_tipoSerializer()
+	class Meta:
+		model = Pedido
+		fields = ['granja','tipo','fecha','subtotal','total','fecha_registro',]
+
+class pedidos_medicamentos_extendidoSerializer(serializers.ModelSerializer):
+	pedido = PedidoSerializer() 
+	class Meta:
+		model = pedidos_medicamentos_extendido
+		fields = ['pedido','producto','Cantidad','valor',]
+
+class pedidos_alimentos_extendidoSerializer(serializers.ModelSerializer):
+	pedido = PedidoSerializer() 
+	class Meta:
+		model = pedidos_alimentos_extendido
+		fields = ['pedido','referencia','medicado','dosis','fecha_recogida','observaciones','valor',]

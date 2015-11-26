@@ -30,6 +30,10 @@ router.register(r'Manoobrastipo', Mano_obras_tipoViewSet)
 router.register(r'Manoobras', Mano_obraViewSet)
 router.register(r'personal', personalViewSet)
 router.register(r'insumos', InsumoViewSet)
+router.register(r'pedidostipo', Pedidos_tipoViewSet)
+router.register(r'pedidos', PedidoViewSet)
+router.register(r'pedidosmedicamentos', pedidos_medicamentos_extendidoViewSet)
+router.register(r'pedidosalimentos', pedidos_alimentos_extendidoViewSet)
 
 urlpatterns = patterns('',
 
