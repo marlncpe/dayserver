@@ -8,7 +8,7 @@ from models import *
 
 # Register your models here.
 
-class statusAdmin(admin.ModelAdmin):
+class StatusAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'descripcion','fecha_registro',]
 
 class Usuarios_permisoAdmin(admin.ModelAdmin):
@@ -47,10 +47,10 @@ class Alimentos_tipoAdmin(admin.ModelAdmin):
 class AlimentoAdmin(admin.ModelAdmin):
     list_display = ['fabrica','fase','nombre','presentacion','kg_bulto','tipo_alimento','status','fecha_registro',]
 
-class patologias_grupoAdmin(admin.ModelAdmin):
+class Patologias_grupoAdmin(admin.ModelAdmin):
     list_display = ['nombre','descripcion','fecha_registro',]
 
-class patologiasAdmin(admin.ModelAdmin):
+class PatologiasAdmin(admin.ModelAdmin):
     list_display = ['casusa','grupo','causa_muerte','causa_descarte','causa_tratamiento','status','fecha_registro',]
 
 class Medicamentos_laboratorioAdmin(admin.ModelAdmin):
@@ -132,7 +132,7 @@ class Consumos_tipoAdmin(admin.ModelAdmin):
     list_display = ['nombre','descripcion','fecha_registro',] 
 
 class ConsumoAdmin(admin.ModelAdmin):
-    list_display = ['granja','lote','fecha_registro',] 
+    list_display = ['granja','lote','tipo','fecha_registro',] 
 
 class Consumos_farmacoAdmin(admin.ModelAdmin):
     list_display = ['consumo','producto','cantidad','ubicacion',] 
@@ -163,7 +163,7 @@ class Metas_destete_finalizacioneAdmin(admin.ModelAdmin):
 
 
 
-admin.site.register(status, statusAdmin)
+admin.site.register(Status, StatusAdmin)
 admin.site.register(Usuarios_permiso, Usuarios_permisoAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Granjas_tipo, Granjas_tipoAdmin)
@@ -175,8 +175,8 @@ admin.site.register(Alimentos_fabrica, Alimentos_fabricaAdmin)
 admin.site.register(Alimentos_fase,Alimentos_faseAdmin)
 admin.site.register(Alimentos_tipo,Alimentos_tipoAdmin)
 admin.site.register(Alimento,AlimentoAdmin)
-admin.site.register(patologias_grupo,patologias_grupoAdmin)
-admin.site.register(patologias,patologiasAdmin)
+admin.site.register(Patologias_grupo,Patologias_grupoAdmin)
+admin.site.register(Patologias,PatologiasAdmin)
 admin.site.register(Medicamentos_laboratorio,Medicamentos_laboratorioAdmin)
 admin.site.register(Medicamentos_tipo,Medicamentos_tipoAdmin)
 admin.site.register(Medicamento,MedicamentoAdmin)
