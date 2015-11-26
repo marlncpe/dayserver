@@ -8,3 +8,15 @@ from website.models import *
 from serializers import *
 from rest_framework import viewsets, generics, filters
 
+class UserSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = User
+
+class LoginView(RetrieveAPIView):
+	serializer_class = UserSerializer
+	model = User
+	queryset = User.objects.all()
+	
+	
+	def get_object(self):
+		return self.request.user

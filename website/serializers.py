@@ -6,3 +6,15 @@ from .models import *
 from rest_framework import permissions
 from rest_framework.permissions import IsAdminUser
  
+class UsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'first_name', 'last_name', 'email','username','password')
+        permission_classes = (IsAdminUser,)
+
+    def create(self, validated_data):
+        user = User(email=validated_data['email'], username=validated_data['username'])
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+   
