@@ -234,3 +234,8 @@ class Compras_alimentoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Compras_alimento
 		fields = ('compra','referencia','lote','cantidad','valor','medicado','dosis_medicado','valor_medicado',)
+
+class MedicadoAdmin(admin.ModelAdmin):
+	class Meta:
+		model = Medicado
+		fields = ('producto','Principio','referencia','status','fecha_registro',)

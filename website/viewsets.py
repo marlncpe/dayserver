@@ -176,3 +176,9 @@ class Compras_alimentoViewSet(viewsets.ModelViewSet):
     serializer_class = Compras_alimentoSerializer
     queryset = Compras_alimento.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class MedicadoViewSet(viewsets.ModelViewSet):
+    serializer_class = MedicadoSerializer
+    queryset = Medicado.objects.all()
+    permission_classes = [permissions.AllowAny,]
+    

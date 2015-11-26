@@ -42,6 +42,7 @@ router.register(r'compras', CompraViewSet)
 router.register(r'comprasinsumos', Compras_insumoViewSet)
 router.register(r'comprasmedicamentos', Compras_medicamentoViewSet)
 router.register(r'comprasalimentos', Compras_alimentoViewSet)
+router.register(r'medicado', MedicadoViewSet)
 
 urlpatterns = patterns('',
 
