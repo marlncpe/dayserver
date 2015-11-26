@@ -96,3 +96,18 @@ class MedicamentoViewSet(viewsets.ModelViewSet):
     serializer_class = MedicamentoSerializer
     queryset = Medicamento.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class Mano_obras_tipoViewSet(viewsets.ModelViewSet):
+    serializer_class = Mano_obras_tipoSerializer
+    queryset = Mano_obras_tipo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Mano_obraViewSet(viewsets.ModelViewSet):
+    serializer_class = Mano_obraSerializer
+    queryset = Mano_obra.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class personalViewSet(viewsets.ModelViewSet):
+    serializer_class = personalSerializer
+    queryset = personal.objects.all()
+    permission_classes = [permissions.AllowAny,]

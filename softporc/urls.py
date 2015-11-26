@@ -26,7 +26,9 @@ router.register(r'medicamentoslaboratorio', Medicamentos_laboratorioViewSet)
 router.register(r'medicamentostipo', Medicamentos_tipoViewSet)
 router.register(r'medicamentosindicaciones', Medicamentos_indicacioneViewSet)
 router.register(r'medicamentos', MedicamentoViewSet)
-
+router.register(r'Manoobrastipo', Mano_obras_tipoViewSet)
+router.register(r'Manoobras', Mano_obraViewSet)
+router.register(r'personal', personalViewSet)
 
 urlpatterns = patterns('',
 

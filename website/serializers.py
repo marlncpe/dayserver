@@ -138,3 +138,19 @@ class Medicamentos_indicacioneSerializer(serializers.ModelSerializer):
 		model = Medicamentos_indicacione
 		fields = ('medicamento','indicacion','descripcion','fecha_registro',)
 
+class Mano_obras_tipoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Mano_obras_tipo
+		fields = ('nombre','descripcion','fecha_registro',)
+
+class Mano_obraSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	class Meta:
+		model = Mano_obra
+		fields = ('granja','fecha_inicial','fecha_final','tipo','detalle','num_personas_pagadas','valor_total',)
+
+class personalSerializer(serializers.ModelSerializer):#pendiente con esta tabla me parece q es redundante
+	class Meta:
+		model = personal
+		fields = ('nombres','apellidos','siglas','centro_costo','fecha_ingreso','fecha_retiro','status','eps','contacto',)
+
