@@ -8,7 +8,7 @@ from website.views import *
 from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 
-
+router.register(r'status', StatusViewSet)
 router.register(r'usuarios', UsuarioViewSet)
 
 urlpatterns = patterns('',

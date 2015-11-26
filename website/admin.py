@@ -8,7 +8,7 @@ from models import *
 
 # Register your models here.
 
-class statusAdmin(admin.ModelAdmin):
+class StatusAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'descripcion','fecha_registro',]
 
 class Usuarios_permisoAdmin(admin.ModelAdmin):
@@ -163,7 +163,7 @@ class Metas_destete_finalizacioneAdmin(admin.ModelAdmin):
 
 
 
-admin.site.register(status, statusAdmin)
+admin.site.register(Status, StatusAdmin)
 admin.site.register(Usuarios_permiso, Usuarios_permisoAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Granjas_tipo, Granjas_tipoAdmin)

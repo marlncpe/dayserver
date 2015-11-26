@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 
 # Create your models here.
-class status(models.Model):
+class Status(models.Model):
     nombre = models.CharField(max_length=11,blank=False)
     descripcion = models.CharField(max_length=255, blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
@@ -27,7 +27,7 @@ class UserProfile(models.Model):
     respuesta_seguridad= models.CharField(max_length=60,blank=True)
     persona_contacto = models.CharField(max_length=255, blank=True)
     dias_pago = models.CharField(max_length=255, blank=True)
-    status = models.ForeignKey(status)
+    status = models.ForeignKey(Status)
 
 class Granjas_tipo(models.Model):
     nombre = models.CharField(max_length=255, blank=False)
@@ -74,7 +74,7 @@ class Inmunocastraciones_extendida(models.Model):
 
 class Alimentos_fabrica(models.Model):
     nombre = models.CharField(max_length=255,blank=False)
-    status = models.ForeignKey(status)
+    status = models.ForeignKey(Status)
     fecha_registro = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
@@ -103,7 +103,7 @@ class Alimento(models.Model):
     presentacion = models.CharField(max_length=255,blank=True)
     kg_bulto = models.CharField(max_length=11,blank=False)
     tipo_alimento = models.ForeignKey(Alimentos_tipo)
-    status = models.ForeignKey(status)
+    status = models.ForeignKey(Status)
     fecha_registro = models.DateField(auto_now_add=True)
 
 class patologias_grupo(models.Model):
@@ -120,7 +120,7 @@ class patologias(models.Model):
     causa_muerte = models.CharField(max_length=50, blank=True)
     causa_descarte = models.CharField(max_length=50, blank=True) 
     causa_tratamiento = models.CharField(max_length=50, blank=True)
-    status = models.ForeignKey(status)
+    status = models.ForeignKey(Status)
     fecha_registro = models.DateField(auto_now_add=True)
 
 class Medicamentos_laboratorio(models.Model):
@@ -140,7 +140,7 @@ class Medicamento(models.Model):
     registro_ica = models.CharField(max_length=255, blank=False)
     presentacion = models.CharField(max_length=255, blank=True)
     tipo = models.ForeignKey(Medicamentos_tipo)
-    status = models.ForeignKey(status)
+    status = models.ForeignKey(Status)
     fecha_registro = models.DateField(auto_now_add=True)
 
 class Medicamentos_indicacione(models.Model):
@@ -170,7 +170,7 @@ class personal(models.Model):#pendiente con esta tabla me parece q es redundante
     centro_costo = models.CharField(max_length=255, blank=True)
     fecha_ingreso = models.CharField(max_length=10, blank=False)
     fecha_retiro = models.CharField(max_length=10, blank=True)
-    status = models.ForeignKey(status)
+    status = models.ForeignKey(Status)
     eps = models.CharField(max_length=255, blank=True)
     contacto = models.CharField(max_length=16, blank=True)
 
@@ -179,7 +179,7 @@ class Insumo(models.Model):
     Marca = models.CharField(max_length=50, blank=True)
     presentacion = models.CharField(max_length=50, blank=True)
     unidades_paquetes = models.CharField(max_length=11, blank=False)
-    status = models.ForeignKey(status)
+    status = models.ForeignKey(Status)
     fecha_registro = models.DateField(auto_now_add=True)
 
 class Pedidos_tipo(models.Model):
@@ -229,7 +229,7 @@ class animale(models.Model):
     procedencia = models.CharField(max_length=255, blank=False)
     genetica = models.ForeignKey(animales_genetica)
     observaciones = models.CharField(max_length=255, blank=True)
-    status = models.ForeignKey(status)
+    status = models.ForeignKey(Status)
 
 class mortalidad(models.Model):
     granja = models.ForeignKey(Granja)
@@ -284,7 +284,7 @@ class Medicado(models.Model):
     producto = models.CharField(max_length=255, blank=True)
     Principio = models.CharField(max_length=255, blank=True)
     referencia = models.CharField(max_length=255, blank=True)
-    status = models.ForeignKey(status)
+    status = models.ForeignKey(Status)
     fecha_registro = models.DateField(auto_now_add=True)
 
 class Traslados_animale(models.Model):
@@ -315,7 +315,7 @@ class ventas(models.Model):
     precio_total = models.CharField(max_length=255, blank=True)
     remision = models.CharField(max_length=255, blank=True)
     costos_flete = models.CharField(max_length=255, blank=True)
-    pago = models.ForeignKey(status)
+    pago = models.ForeignKey(Status)
     fecha_registro = models.DateField(auto_now_add=True)
 
 class Costos_gasto(models.Model):

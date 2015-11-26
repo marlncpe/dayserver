@@ -17,4 +17,9 @@ class UsuarioSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+
+class StatusSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Status
+		fields = ('nombre', 'descripcion', 'fecha_registro')
    

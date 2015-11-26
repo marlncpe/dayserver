@@ -11,3 +11,8 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     serializer_class = UsuarioSerializer
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class StatusViewSet(viewsets.ModelViewSet):
+    serializer_class = StatusSerializer
+    queryset = Status.objects.all()
+    permission_classes = [permissions.AllowAny,]
