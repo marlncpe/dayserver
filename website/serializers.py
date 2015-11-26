@@ -80,3 +80,26 @@ class Inmunocastraciones_extendidaSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Inmunocastraciones_extendida
 		fields = ('Inmunocastracion','numero','fecha_aplicacion','fecha_registro',)
+
+class Alimentos_fabricaSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Alimentos_fabrica
+		fields = ('nombre','status','fecha_registro',)
+
+class Alimentos_faseSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Alimentos_fase
+		fields = ('nombre','descripcion','fecha_registro',)
+
+class Alimentos_tipoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Alimentos_tipo
+		fields = ('nombre','descripcion','fecha_registro',)
+
+class AlimentoSerializer(serializers.ModelSerializer):
+	fabrica = Alimentos_fabricaSerializer()
+	fase = Alimentos_faseSerializer()
+	tipo_alimento = Alimentos_tipoSerializer()
+	class Meta:
+		model = Alimento
+		fields = ('fabrica','fase','tipo_alimento','nombre','presentacion','kg_bulto','status','fecha_registro',)

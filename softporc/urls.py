@@ -16,6 +16,10 @@ router.register(r'galpones', GalponeViewSet)
 router.register(r'corrales', CorraleViewSet)
 router.register(r'inmunocastraciones', InmunocastracioneViewSet)
 router.register(r'inmunocastracionesextendida', Inmunocastraciones_extendidaViewSet)
+router.register(r'alimentosfabrica', Alimentos_fabricaViewSet)
+router.register(r'alimentosfase', Alimentos_faseViewSet)
+router.register(r'alimentostipo', Alimentos_tipoViewSet)
+router.register(r'alimentos', AlimentoViewSet)
 
 urlpatterns = patterns('',
 

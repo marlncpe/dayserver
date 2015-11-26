@@ -46,3 +46,23 @@ class Inmunocastraciones_extendidaViewSet(viewsets.ModelViewSet):
     serializer_class = Inmunocastraciones_extendidaSerializer
     queryset = Inmunocastraciones_extendida.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class Alimentos_fabricaViewSet(viewsets.ModelViewSet):
+    serializer_class = Alimentos_fabricaSerializer
+    queryset = Alimentos_fabrica.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Alimentos_faseViewSet(viewsets.ModelViewSet):
+    serializer_class = Alimentos_faseSerializer
+    queryset = Alimentos_fase.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Alimentos_tipoViewSet(viewsets.ModelViewSet):
+    serializer_class = Alimentos_tipoSerializer
+    queryset = Alimentos_tipo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class AlimentoViewSet(viewsets.ModelViewSet):
+    serializer_class = AlimentoSerializer
+    queryset = Alimento.objects.all()
+    permission_classes = [permissions.AllowAny,]
