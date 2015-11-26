@@ -42,7 +42,7 @@ class Alimentos_faseAdmin(admin.ModelAdmin):
     list_display = ['nombre','descripcion','fecha_registro',]
 
 class Alimentos_tipoAdmin(admin.ModelAdmin):
-    list_display = ['nombre ','descripcion','fecha_registro',]
+    list_display = ['nombre','descripcion','fecha_registro',]
 
 class AlimentoAdmin(admin.ModelAdmin):
     list_display = ['fabrica','fase','nombre','presentacion','kg_bulto','tipo_alimento','status','fecha_registro',]
@@ -153,7 +153,7 @@ class Curvas_crecimientoAdmin(admin.ModelAdmin):
     list_display = ['curva','edad','peso','consumo','fecha_registro',] 
 
 class Metas_pcAdmin(admin.ModelAdmin):
-    list_display = ['granja','etapa','peso_inicial','edad_inicial','peso_final','mortalidad','conversion','ganacia_peso','gdp','densidad','dias_permanencia'.'consumo_total','consumo_animal_diario','fecha_registro',] 
+    list_display = ['granja','etapa','peso_inicial','edad_inicial','peso_final','mortalidad','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','fecha_registro',] 
 
 class Metas_cebaAdmin(admin.ModelAdmin):
     list_display = ['granja','peso_inicial','edad_inicial','peso_final','mortalidad','descarte','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','costos_produccion','fecha_registro',] 
@@ -165,7 +165,7 @@ class Metas_destete_finalizacioneAdmin(admin.ModelAdmin):
 
 admin.site.register(status, statusAdmin)
 admin.site.register(Usuarios_permiso, Usuarios_permisoAdmin)
-admin.site.register(UserProfileAdmin, UserProfile)
+admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Granjas_tipo, Granjas_tipoAdmin)
 admin.site.register(Granja, GranjaAdmin)
 admin.site.register(Galpone, GalponeAdmin)
