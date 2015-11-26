@@ -68,3 +68,15 @@ class CorraleSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Corrale
 		fields = ('galpon','numero','area_disponible','capacidad','fecha_registro',)
+
+class InmunocastracioneSerializer(serializers.ModelSerializer):
+	granja = GranjanombreSerializer()
+	class Meta:
+		model = Inmunocastracione
+		fields = ['granja','rastro','periodo_venta','fecha_registro',]
+
+class Inmunocastraciones_extendidaSerializer(serializers.ModelSerializer):
+	Inmunocastracion = InmunocastracioneSerializer()
+	class Meta:
+		model = Inmunocastraciones_extendida
+		fields = ('Inmunocastracion','numero','fecha_aplicacion','fecha_registro',)

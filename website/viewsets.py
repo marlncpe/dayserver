@@ -36,3 +36,13 @@ class CorraleViewSet(viewsets.ModelViewSet):
     serializer_class = CorraleSerializer
     queryset = Corrale.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class InmunocastracioneViewSet(viewsets.ModelViewSet):
+    serializer_class = InmunocastracioneSerializer
+    queryset = Inmunocastracione.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Inmunocastraciones_extendidaViewSet(viewsets.ModelViewSet):
+    serializer_class = Inmunocastraciones_extendidaSerializer
+    queryset = Inmunocastraciones_extendida.objects.all()
+    permission_classes = [permissions.AllowAny,]
