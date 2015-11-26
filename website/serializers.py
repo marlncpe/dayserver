@@ -22,4 +22,20 @@ class StatusSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Status
 		fields = ('nombre', 'descripcion', 'fecha_registro')
+
+class Granjas_tipoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Granjas_tipo
+		fields = ('nombre','descripcion','fecha_registro')
+
+class Granjas_tiponameSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Granjas_tipo
+		fields = ('nombre',)
+
+class GranjaSerializer(serializers.ModelSerializer):
+	tipo_granja = Granjas_tiponameSerializer()
+	class Meta:
+		model = Granja
+		fields = ('nombre','tipo_granja','area','ubicacion','fecha_registro',)
    

@@ -16,3 +16,13 @@ class StatusViewSet(viewsets.ModelViewSet):
     serializer_class = StatusSerializer
     queryset = Status.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class Granjas_tipoViewSet(viewsets.ModelViewSet):
+    serializer_class = Granjas_tipoSerializer
+    queryset = Granjas_tipo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class GranjaViewSet(viewsets.ModelViewSet):
+    serializer_class = GranjaSerializer
+    queryset = Granja.objects.all()
+    permission_classes = [permissions.AllowAny,]
