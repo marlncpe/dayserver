@@ -111,3 +111,9 @@ class personalViewSet(viewsets.ModelViewSet):
     serializer_class = personalSerializer
     queryset = personal.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class InsumoViewSet(viewsets.ModelViewSet):
+    serializer_class = InsumoSerializer
+    queryset = Insumo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+    

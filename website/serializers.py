@@ -154,3 +154,7 @@ class personalSerializer(serializers.ModelSerializer):#pendiente con esta tabla 
 		model = personal
 		fields = ('nombres','apellidos','siglas','centro_costo','fecha_ingreso','fecha_retiro','status','eps','contacto',)
 
+class InsumoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Insumo
+		fields = ['descripcion','Marca','presentacion','unidades_paquetes','status','fecha_registro',]
