@@ -115,3 +115,26 @@ class PatologiasSerializer(serializers.ModelSerializer):
 		model = Patologias
 		fields = ('casusa','grupo','causa_muerte','causa_descarte','causa_tratamiento','status','fecha_registro',)
 
+class Medicamentos_laboratorioSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Medicamentos_laboratorio
+		fields = ('nombre','descripcion','registro_comercial','fecha_registro',)
+
+class Medicamentos_tipoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Medicamentos_tipo
+		fields = ('nombre','descripcion','fecha_registro',)
+
+class MedicamentoSerializer(serializers.ModelSerializer):
+	laboratorio = Medicamentos_laboratorioSerializer()
+	tipo = Medicamentos_tipoSerializer()
+	class Meta:
+		model = Medicamento
+		fields = ('nombre','Laboratorio','registro_ica','presentacion','tipo','status','fecha_registro',)
+
+class Medicamentos_indicacioneSerializer(serializers.ModelSerializer):
+	medicamento = MedicamentoSerializer()
+	class Meta:
+		model = Medicamentos_indicacione
+		fields = ('medicamento','indicacion','descripcion','fecha_registro',)
+

@@ -22,6 +22,11 @@ router.register(r'alimentostipo', Alimentos_tipoViewSet)
 router.register(r'alimentos', AlimentoViewSet)
 router.register(r'patologiasgrupo', Patologias_grupoViewSet)
 router.register(r'patologias', PatologiasViewSet)
+router.register(r'medicamentoslaboratorio', Medicamentos_laboratorioViewSet)
+router.register(r'medicamentostipo', Medicamentos_tipoViewSet)
+router.register(r'medicamentosindicaciones', Medicamentos_indicacioneViewSet)
+router.register(r'medicamentos', MedicamentoViewSet)
+
 
 urlpatterns = patterns('',
 

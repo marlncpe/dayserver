@@ -76,3 +76,23 @@ class PatologiasViewSet(viewsets.ModelViewSet):
     serializer_class = PatologiasSerializer
     queryset = Patologias.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class Medicamentos_laboratorioViewSet(viewsets.ModelViewSet):
+    serializer_class = Medicamentos_laboratorioSerializer
+    queryset = Medicamentos_laboratorio.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Medicamentos_tipoViewSet(viewsets.ModelViewSet):
+    serializer_class = Medicamentos_tipoSerializer
+    queryset = Medicamentos_tipo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Medicamentos_indicacioneViewSet(viewsets.ModelViewSet):
+    serializer_class = Medicamentos_indicacioneSerializer
+    queryset = Medicamentos_indicacione.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class MedicamentoViewSet(viewsets.ModelViewSet):
+    serializer_class = MedicamentoSerializer
+    queryset = Medicamento.objects.all()
+    permission_classes = [permissions.AllowAny,]
