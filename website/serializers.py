@@ -53,7 +53,7 @@ class GalponeSerializer(serializers.ModelSerializer):
     granja = GranjanombreSerializer()
     class Meta:
 		model = Galpone
-		fields = ('granja','nombre','numero','fecha_registro',)
+		fields = ('id','granja','nombre','numero','fecha_registro',)
 
 #B clase solo para extraer nombre del galpon
 class GalponombreSerializer(serializers.ModelSerializer):
@@ -67,19 +67,19 @@ class CorraleSerializer(serializers.ModelSerializer):
 	galpon = GalponombreSerializer()
 	class Meta:
 		model = Corrale
-		fields = ('galpon','numero','area_disponible','capacidad','fecha_registro',)
+		fields = ('id','galpon','numero','area_disponible','capacidad','fecha_registro',)
 
 class InmunocastracioneSerializer(serializers.ModelSerializer):
 	granja = GranjanombreSerializer()
 	class Meta:
 		model = Inmunocastracione
-		fields = ('granja','rastro','periodo_venta','fecha_registro',)
+		fields = ('id','granja','rastro','periodo_venta','fecha_registro',)
 
 class Inmunocastraciones_extendidaSerializer(serializers.ModelSerializer):
 	Inmunocastracion = InmunocastracioneSerializer()
 	class Meta:
 		model = Inmunocastraciones_extendida
-		fields = ('Inmunocastracion','numero','fecha_aplicacion','fecha_registro',)
+		fields = ('id','Inmunocastracion','numero','fecha_aplicacion','fecha_registro',)
 
 class Alimentos_fabricaSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -102,7 +102,7 @@ class AlimentoSerializer(serializers.ModelSerializer):
 	tipo_alimento = Alimentos_tipoSerializer()
 	class Meta:
 		model = Alimento
-		fields = ('fabrica','fase','tipo_alimento','nombre','presentacion','kg_bulto','status','fecha_registro',)
+		fields = ('id','fabrica','fase','tipo_alimento','nombre','presentacion','kg_bulto','status','fecha_registro',)
 
 class Patologias_grupoSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -113,7 +113,7 @@ class PatologiasSerializer(serializers.ModelSerializer):
 	grupo = Patologias_grupoSerializer()
 	class Meta:
 		model = Patologias
-		fields = ('casusa','grupo','causa_muerte','causa_descarte','causa_tratamiento','status','fecha_registro',)
+		fields = ('id','casusa','grupo','causa_muerte','causa_descarte','causa_tratamiento','status','fecha_registro',)
 
 class Medicamentos_laboratorioSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -130,7 +130,7 @@ class MedicamentoSerializer(serializers.ModelSerializer):
 	tipo = Medicamentos_tipoSerializer()
 	class Meta:
 		model = Medicamento
-		fields = ('nombre','Laboratorio','registro_ica','presentacion','tipo','status','fecha_registro',)
+		fields = ('id','nombre','Laboratorio','registro_ica','presentacion','tipo','status','fecha_registro',)
 
 class Medicamentos_indicacioneSerializer(serializers.ModelSerializer):
 	medicamento = MedicamentoSerializer()
@@ -147,17 +147,17 @@ class Mano_obraSerializer(serializers.ModelSerializer):
 	granja = GranjanombreSerializer()
 	class Meta:
 		model = Mano_obra
-		fields = ('granja','fecha_inicial','fecha_final','tipo','detalle','num_personas_pagadas','valor_total',)
+		fields = ('id','granja','fecha_inicial','fecha_final','tipo','detalle','num_personas_pagadas','valor_total',)
 
 class personalSerializer(serializers.ModelSerializer):#pendiente con esta tabla me parece q es redundante
 	class Meta:
 		model = personal
-		fields = ('nombres','apellidos','siglas','centro_costo','fecha_ingreso','fecha_retiro','status','eps','contacto',)
+		fields = ('id','nombres','apellidos','siglas','centro_costo','fecha_ingreso','fecha_retiro','status','eps','contacto',)
 
 class InsumoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Insumo
-		fields = ('descripcion','Marca','presentacion','unidades_paquetes','status','fecha_registro',)
+		fields = ('id','descripcion','Marca','presentacion','unidades_paquetes','status','fecha_registro',)
 
 class Pedidos_tipoSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -169,7 +169,7 @@ class PedidoSerializer(serializers.ModelSerializer):
 	tipo = Pedidos_tipoSerializer()
 	class Meta:
 		model = Pedido
-		fields = ('granja','tipo','fecha','subtotal','total','fecha_registro',)
+		fields = ('id','granja','tipo','fecha','subtotal','total','fecha_registro',)
 
 class pedidos_medicamentos_extendidoSerializer(serializers.ModelSerializer):
 	pedido = PedidoSerializer() 
@@ -195,7 +195,7 @@ class animaleSerializer(serializers.ModelSerializer):
 	genetica = animales_geneticaSerializer()
 	class Meta:
 		model = animale
-		fields = ('granja','galpon','corrales','lote','edad','num_machos','num_hembras','peso_total','remision','valor_lote','procedencia','genetica','observaciones','status',)
+		fields = ('id','granja','galpon','corrales','lote','edad','num_machos','num_hembras','peso_total','remision','valor_lote','procedencia','genetica','observaciones','status',)
 
 class mortalidadSerializer(serializers.ModelSerializer):
 	granja = GranjanombreSerializer()
@@ -203,7 +203,7 @@ class mortalidadSerializer(serializers.ModelSerializer):
 	corral = CorraleSerializer()
 	class Meta:
 		model = mortalidad
-		fields = ('granja','galpon','corral','fecha','lote','sexo','causa','cantidad','peso','destino',)
+		fields = ('id','granja','galpon','corral','fecha','lote','sexo','causa','cantidad','peso','destino',)
 
 class Compras_tipoSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -215,7 +215,7 @@ class CompraSerializer(serializers.ModelSerializer):
 	tipo = Compras_tipoSerializer()
 	class Meta:
 		model = Compra
-		fields = ('granja','tipo','fecha','subtotal','total','fecha_registro',)
+		fields = ('id','granja','tipo','fecha','subtotal','total','fecha_registro',)
 
 class Compras_insumoSerializer(serializers.ModelSerializer):
 	compra = CompraSerializer()
@@ -238,7 +238,7 @@ class Compras_alimentoSerializer(serializers.ModelSerializer):
 class MedicadoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Medicado
-		fields = ('producto','Principio','referencia','status','fecha_registro',)
+		fields = ('id','producto','Principio','referencia','status','fecha_registro',)
 
 class Traslados_animaleSerializer(serializers.ModelSerializer):
 	granja = GranjanombreSerializer()
