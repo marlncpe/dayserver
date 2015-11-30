@@ -32,14 +32,14 @@ class Granjas_tipoSerializer(serializers.ModelSerializer):
 class Granjas_tiponameSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Granjas_tipo
-		fields = ('nombre',)
+		fields = ('id','nombre',)
 #End
 
 class GranjaSerializer(serializers.ModelSerializer):
 	tipo_granja = Granjas_tiponameSerializer()
 	class Meta:
 		model = Granja
-		fields = ('nombre','tipo_granja','area','ubicacion','fecha_registro',)
+		fields = ('id','nombre','tipo_granja','area','ubicacion','fecha_registro',)
 
 #B clase solo para extraer nombre de la granja
 class GranjanombreSerializer(serializers.ModelSerializer):
