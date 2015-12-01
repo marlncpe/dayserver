@@ -191,7 +191,7 @@ class animales_geneticaSerializer(serializers.ModelSerializer):
 class animaleSerializer(serializers.ModelSerializer):
 	granja = GranjanombreSerializer()
 	galpon = GalponombreSerializer()
-	corral = CorraleSerializer()
+	corrales = CorraleSerializer()
 	genetica = animales_geneticaSerializer()
 	class Meta:
 		model = animale
