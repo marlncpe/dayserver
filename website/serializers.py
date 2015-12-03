@@ -50,10 +50,16 @@ class GranjanombreSerializer(serializers.ModelSerializer):
 #End
 	
 class GalponeSerializer(serializers.ModelSerializer):
-    granja = GranjaSerializer()
+   # granja = GranjaSerializer()
     class Meta:
 		model = Galpone
-		fields = ('id','granja','nombre','numero','fecha_registro',)
+		fields = ('id','nombre','numero','fecha_registro',)#falta granja
+	
+    #def create(self, validated_data):
+     #   id = validated_data.pop('granja')
+     #   granja = Granja.objects.create(**id)
+     #   validated_data['granja'] = granja
+     #  	galpone = Galpone.objects.create(**validated_data)
 
 #B clase solo para extraer nombre del galpon
 class GalponombreSerializer(serializers.ModelSerializer):
@@ -64,10 +70,10 @@ class GalponombreSerializer(serializers.ModelSerializer):
 #End
 
 class CorraleSerializer(serializers.ModelSerializer):
-	galpon = GalponombreSerializer()
+	#galpon = GalponombreSerializer()
 	class Meta:
 		model = Corrale
-		fields = ('id','galpon','numero','area_disponible','capacidad','fecha_registro',)
+		fields = ('id','numero','area_disponible','capacidad','fecha_registro',)#falta galpon
 
 class InmunocastracioneSerializer(serializers.ModelSerializer):
 	granja = GranjanombreSerializer()

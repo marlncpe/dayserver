@@ -24,10 +24,10 @@ class GranjaAdmin(admin.ModelAdmin):
     list_display = ['nombre','area','ubicacion','fecha_registro',]
 
 class GalponeAdmin(admin.ModelAdmin):
-    list_display = ['granja','nombre','numero','fecha_registro',]
+    list_display = ['nombre','numero','fecha_registro',]
 
 class CorraleAdmin(admin.ModelAdmin):
-    list_display = ['galpon','numero','area_disponible','capacidad','fecha_registro',]
+    list_display = ['numero','area_disponible','capacidad','fecha_registro',]
 
 class InmunocastracioneAdmin(admin.ModelAdmin):
     list_display = ['granja','rastro','periodo_venta','fecha_registro',]
