@@ -50,7 +50,7 @@ class GranjanombreSerializer(serializers.ModelSerializer):
 #End
 	
 class GalponeSerializer(serializers.ModelSerializer):
-    granja = GranjanombreSerializer()
+    granja = GranjaSerializer()
     class Meta:
 		model = Galpone
 		fields = ('id','granja','nombre','numero','fecha_registro',)
