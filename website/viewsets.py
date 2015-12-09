@@ -256,3 +256,13 @@ class Metas_destete_finalizacioneViewSet(viewsets.ModelViewSet):
     serializer_class = Metas_destete_finalizacioneSerializer
     queryset = Metas_destete_finalizacione.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+class RecordatorioViewSet(viewsets.ModelViewSet):
+    serializer_class = RecordatorioSerializer
+    queryset = Recordatorio.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Recordatorios_extendidoViewSet(viewsets.ModelViewSet):
+    serializer_class = Recordatorios_extendidoSerializer
+    queryset = Recordatorios_extendido.objects.all()
+    permission_classes = [permissions.AllowAny,]
