@@ -161,6 +161,11 @@ class Metas_cebaAdmin(admin.ModelAdmin):
 class Metas_destete_finalizacioneAdmin(admin.ModelAdmin):
     list_display = ['granja','peso_inicial','edad_inicial','peso_final','mortalidad','descarte','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','costos_produccion','fecha_registro',] 
 
+class RecordatorioAdmin(admin.ModelAdmin):
+    list_display = ['tipo','fecha_recordatorio','fecha_registro',]
+
+class Recordatorios_extendidoAdmin(admin.ModelAdmin):
+    list_display = ['nombre','descripcion','fecha_registro',]
 
 
 admin.site.register(Status, StatusAdmin)
@@ -214,3 +219,5 @@ admin.site.register(Curvas_crecimiento,Curvas_crecimientoAdmin)
 admin.site.register(Metas_pc,Metas_pcAdmin)
 admin.site.register(Metas_ceba,Metas_cebaAdmin)
 admin.site.register(Metas_destete_finalizacione,Metas_destete_finalizacioneAdmin)
+admin.site.register(Recordatorio, RecordatorioAdmin)
+admin.site.register(Recordatorios_extendido, Recordatorios_extendidoAdmin)

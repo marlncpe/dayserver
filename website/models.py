@@ -449,12 +449,12 @@ class Metas_destete_finalizacione(models.Model):
     costos_produccion = models.CharField(max_length=255, blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
-class recordatorio(models.Model):
+class Recordatorio(models.Model):
     tipo = models.CharField(max_length=50, blank=True)
     fecha_recordatorio = models.DateField()
     fecha_registro = models.DateField(auto_now_add=True)
 
-class recordatorio_extendido(models.Model):
+class Recordatorios_extendido(models.Model):
     nombre = models.CharField(max_length=50,blank=True)
     descripcion = models.CharField(max_length=255, blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
