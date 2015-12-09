@@ -335,3 +335,13 @@ class Metas_destete_finalizacioneSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Metas_destete_finalizacione
 		fields = ('granja','peso_inicial','edad_inicial','peso_final','mortalidad','descarte','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','costos_produccion','fecha_registro',) 
+
+class RecordatorioSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Recordatorio
+		fields = ('tipo','fecha_recordatorio','fecha_registro',) 
+
+class Recordatorios_extendidoSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Recordatorios_extendido
+		fields = ('nombre','descripcion','fecha_registro',) 
