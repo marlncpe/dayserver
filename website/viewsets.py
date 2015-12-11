@@ -26,6 +26,8 @@ class GranjaViewSet(viewsets.ModelViewSet):
     serializer_class = GranjaSerializer
     queryset = Granja.objects.all()
     permission_classes = [permissions.AllowAny,]
+    filter_backends = (filters.DjangoFilterBackend,filters.SearchFilter,)
+    search_fields = ('nombre',)
 
 class GalponeViewSet(viewsets.ModelViewSet):
     serializer_class = GalponeSerializer
