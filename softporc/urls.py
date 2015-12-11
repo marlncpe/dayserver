@@ -59,6 +59,8 @@ router.register(r'metas/pc', Metas_pcViewSet)
 router.register(r'metas/ceba', Metas_cebaViewSet)
 router.register(r'metas/destete', Metas_destete_finalizacioneViewSet)
 
+router.register(r'metas/recordatorio', RecordatorioViewSet)
+router.register(r'metas/recordatorio/extendido', Recordatorios_extendidoViewSet)
 urlpatterns = patterns('',
 
 url(r'^', include(router.urls)),
