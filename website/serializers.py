@@ -39,7 +39,7 @@ class GranjaSerializer(serializers.HyperlinkedModelSerializer):
 	#tipo_granja = Granjas_tiponameSerializer()#serializers.PrimaryKeyRelatedField(read_only=True)
 	class Meta:
 		model = Granja
-		fields = ('id','nombre','tipo_granja','area','ubicacion','fecha_registro',)
+		fields = ('id','nombre','tipo_granja','area','ubicacion','dueno','fecha_registro',)
 
 #B clase solo para extraer nombre de la granja
 class GranjanombreSerializer(serializers.ModelSerializer):
