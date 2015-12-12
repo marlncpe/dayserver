@@ -21,7 +21,7 @@ class Granjas_tipoAdmin(admin.ModelAdmin):
     list_display = ['nombre','descripcion','fecha_registro',]
 
 class GranjaAdmin(admin.ModelAdmin):
-    list_display = ['nombre','area','ubicacion','fecha_registro',]
+    list_display = ['nombre','tipo_granja','area','ubicacion','fecha_registro',]
 
 class GalponeAdmin(admin.ModelAdmin):
     list_display = ['nombre','numero','fecha_registro',]

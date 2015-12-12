@@ -26,7 +26,7 @@ class StatusSerializer(serializers.ModelSerializer):
 class Granjas_tipoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Granjas_tipo
-		fields = ('nombre','descripcion','fecha_registro')
+		fields = ('id','nombre','descripcion','fecha_registro')
 
 #B clase solo para extraer nombre del tipo de granja
 class Granjas_tiponameSerializer(serializers.ModelSerializer):
@@ -35,18 +35,18 @@ class Granjas_tiponameSerializer(serializers.ModelSerializer):
 		fields = ('id','nombre',)
 #End
 
-class GranjaSerializer(serializers.ModelSerializer):
-	#tipo_granja = Granjas_tiponameSerializer()
+class GranjaSerializer(serializers.HyperlinkedModelSerializer):
+	#tipo_granja = Granjas_tiponameSerializer()#serializers.PrimaryKeyRelatedField(read_only=True)
 	class Meta:
 		model = Granja
-		fields = ('id','nombre','area','ubicacion','fecha_registro',)
+		fields = ('id','nombre','tipo_granja','area','ubicacion','dueno','fecha_registro',)
 
 #B clase solo para extraer nombre de la granja
-class GranjanombreSerializer(serializers.ModelSerializer):
-	tipo_granja = Granjas_tiponameSerializer()
+class GranjanombreSerializer(serializers.HyperlinkedModelSerializer):
+	tipo_granja = serializers.PrimaryKeyRelatedField(read_only=True)
 	class Meta:
 		model = Granja
-		fields = ('nombre',)#'tipo_granja',)
+		fields = ('id','nombre','dueno',)#'tipo_granja',)
 #End
 	
 class GalponeSerializer(serializers.ModelSerializer):

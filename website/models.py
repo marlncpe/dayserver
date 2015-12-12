@@ -39,10 +39,11 @@ class Granjas_tipo(models.Model):
 
 class Granja(models.Model):
     nombre = models.CharField(max_length=255, blank=False)
-    #tipo_granja = models.ForeignKey(Granjas_tipo)
+    tipo_granja = models.ForeignKey(Granjas_tipo, null=True, blank=True)
     area = models.CharField(max_length=11, blank=False)
     ubicacion = models.CharField(max_length=255, blank=False)
     fecha_registro = models.DateField(auto_now_add=True)
+    dueno = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     def __unicode__(self):
         return self.nombre 
