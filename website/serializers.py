@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from .models import *
 from rest_framework import permissions
 from rest_framework.permissions import IsAdminUser
+from granjas.serializers import *
  
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,7 +23,7 @@ class StatusSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Status
 		fields = ('nombre', 'descripcion', 'fecha_registro')
-
+'''
 class Granjas_tipoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Granjas_tipo
@@ -86,7 +87,7 @@ class Inmunocastraciones_extendidaSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Inmunocastraciones_extendida
 		fields = ('id','Inmunocastracion','numero','fecha_aplicacion','fecha_registro',)
-
+'''
 class Alimentos_fabricaSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Alimentos_fabrica

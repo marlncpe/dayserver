@@ -18,7 +18,7 @@ class StatusViewSet(viewsets.ModelViewSet):
     serializer_class = StatusSerializer
     queryset = Status.objects.all()
     permission_classes = [permissions.AllowAny,]
-
+'''
 class Granjas_tipoViewSet(viewsets.ModelViewSet):
     serializer_class = Granjas_tipoSerializer
     queryset = Granjas_tipo.objects.all()
@@ -50,7 +50,7 @@ class Inmunocastraciones_extendidaViewSet(viewsets.ModelViewSet):
     serializer_class = Inmunocastraciones_extendidaSerializer
     queryset = Inmunocastraciones_extendida.objects.all()
     permission_classes = [permissions.AllowAny,]
-
+'''
 class Alimentos_fabricaViewSet(viewsets.ModelViewSet):
     serializer_class = Alimentos_fabricaSerializer
     queryset = Alimentos_fabrica.objects.all()

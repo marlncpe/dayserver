@@ -16,7 +16,7 @@ class Usuarios_permisoAdmin(admin.ModelAdmin):
 
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ['user','nacionalidad','cedula','direccion','telefono','foto','tipo_permiso','respuesta_seguridad','persona_contacto','dias_pago','status',]
-
+'''
 class Granjas_tipoAdmin(admin.ModelAdmin):
     list_display = ['nombre','descripcion','fecha_registro',]
 
@@ -34,7 +34,7 @@ class InmunocastracioneAdmin(admin.ModelAdmin):
 
 class Inmunocastraciones_extendidaAdmin(admin.ModelAdmin):
     list_display = ['Inmunocastracion','numero','fecha_aplicacion','fecha_registro',]
-
+'''
 class Alimentos_fabricaAdmin(admin.ModelAdmin):
     list_display = ['nombre','status','fecha_registro',]
 
@@ -171,12 +171,14 @@ class Recordatorios_extendidoAdmin(admin.ModelAdmin):
 admin.site.register(Status, StatusAdmin)
 admin.site.register(Usuarios_permiso, Usuarios_permisoAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
+'''
 admin.site.register(Granjas_tipo, Granjas_tipoAdmin)
 admin.site.register(Granja, GranjaAdmin)
 admin.site.register(Galpone, GalponeAdmin)
 admin.site.register(Corrale, CorraleAdmin)
 admin.site.register(Inmunocastracione, InmunocastracioneAdmin)
 admin.site.register(Inmunocastraciones_extendida, Inmunocastraciones_extendidaAdmin)
+'''
 admin.site.register(Alimentos_fabrica, Alimentos_fabricaAdmin)
 admin.site.register(Alimentos_fase,Alimentos_faseAdmin)
 admin.site.register(Alimentos_tipo,Alimentos_tipoAdmin)

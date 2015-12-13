@@ -4,6 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 from website.viewsets import *
+from granjas.viewsets import *
 from website.views import *
 from rest_framework.routers import DefaultRouter
 router = DefaultRouter()

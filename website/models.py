@@ -2,7 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
-
+from granjas.models import *
 # Create your models here.
 class Status(models.Model):
     nombre = models.CharField(max_length=11,blank=False)
@@ -28,7 +28,7 @@ class UserProfile(models.Model):
     persona_contacto = models.CharField(max_length=255, blank=True)
     dias_pago = models.CharField(max_length=255, blank=True)
     status = models.ForeignKey(Status)
-
+'''
 class Granjas_tipo(models.Model):
     nombre = models.CharField(max_length=255, blank=False)
     descripcion = models.CharField(max_length=255, blank=True)
@@ -72,7 +72,7 @@ class Inmunocastraciones_extendida(models.Model):
     numero = models.CharField(max_length=50,blank=False)
     fecha_aplicacion = models.CharField(max_length=10,blank=True) 
     fecha_registro = models.DateField(auto_now_add=True)
-
+'''
 class Alimentos_fabrica(models.Model):
     nombre = models.CharField(max_length=255,blank=False)
     status = models.ForeignKey(Status)
