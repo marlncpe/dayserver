@@ -203,6 +203,11 @@ admin.site.register(Metas_ceba,Metas_cebaAdmin)
 admin.site.register(Metas_destete_finalizacione,Metas_destete_finalizacioneAdmin)
 admin.site.register(Recordatorio, RecordatorioAdmin)
 admin.site.register(Recordatorios_extendido, Recordatorios_extendidoAdmin)
+admin.site.register(Pedidos_tipo,Pedidos_tipoAdmin)
+admin.site.register(Pedido,PedidoAdmin)
+admin.site.register(pedidos_medicamentos_extendido,pedidos_medicamentos_extendidoAdmin)
+admin.site.register(pedidos_alimentos_extendido,pedidos_alimentos_extendidoAdmin)
+
 '''
 Granjas
 admin.site.register(Granjas_tipo, Granjas_tipoAdmin)
@@ -214,10 +219,6 @@ admin.site.register(Inmunocastraciones_extendida, Inmunocastraciones_extendidaAd
 '''
 '''
 Captura de Datos
-admin.site.register(Pedidos_tipo,Pedidos_tipoAdmin)
-admin.site.register(Pedido,PedidoAdmin)
-admin.site.register(pedidos_medicamentos_extendido,pedidos_medicamentos_extendidoAdmin)
-admin.site.register(pedidos_alimentos_extendido,pedidos_alimentos_extendidoAdmin)
 admin.site.register(animales_genetica,animales_geneticaAdmin)
 admin.site.register(animale,animaleAdmin)
 admin.site.register(mortalidad,mortalidadAdmin)

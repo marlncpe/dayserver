@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 from granjas.models import *
+from website.models import *
 # Create your models here.
 
 class Patologias_grupo(models.Model):

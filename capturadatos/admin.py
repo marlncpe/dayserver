@@ -1,5 +1,7 @@
 from django.contrib import admin
-
+from granjas.admin import *
+from website.admin import *
+from models import *
 # Register your models here.
 
 class Salidas_placeboAdmin(admin.ModelAdmin):
@@ -42,20 +44,16 @@ class Traslados_alimentoAdmin(admin.ModelAdmin):
     list_display = ['granja','origen','destino','referencia','cantidad','valor_flete',]
 
 
-admin.site.register(Pedidos_tipo,Pedidos_tipoAdmin)
-admin.site.register(Pedido,PedidoAdmin)
-admin.site.register(pedidos_medicamentos_extendido,pedidos_medicamentos_extendidoAdmin)
-admin.site.register(pedidos_alimentos_extendido,pedidos_alimentos_extendidoAdmin)
-admin.site.register(animales_genetica,animales_geneticaAdmin)
-admin.site.register(animale,animaleAdmin)
-admin.site.register(mortalidad,mortalidadAdmin)
-admin.site.register(Traslados_animale,Traslados_animaleAdmin)
-admin.site.register(Traslados_alimento,Traslados_alimentoAdmin)
+admin.site.register(Salidas_placebo,Salidas_placeboAdmin)
+admin.site.register(Tratamientos,TratamientosAdmin)
 admin.site.register(Patologias_grupo,Patologias_grupoAdmin)
 admin.site.register(Patologias,PatologiasAdmin)
 admin.site.register(Medicamentos_laboratorio,Medicamentos_laboratorioAdmin)
 admin.site.register(Medicamentos_tipo,Medicamentos_tipoAdmin)
 admin.site.register(Medicamento,MedicamentoAdmin)
 admin.site.register(Medicamentos_indicacione,Medicamentos_indicacioneAdmin)
-admin.site.register(Salidas_placebo,Salidas_placeboAdmin)
-admin.site.register(Tratamientos,TratamientosAdmin)
+admin.site.register(animales_genetica,animales_geneticaAdmin)
+admin.site.register(animale,animaleAdmin)
+admin.site.register(mortalidad,mortalidadAdmin)
+admin.site.register(Traslados_animale,Traslados_animaleAdmin)
+admin.site.register(Traslados_alimento,Traslados_alimentoAdmin)
