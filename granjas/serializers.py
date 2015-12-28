@@ -37,7 +37,7 @@ class GalponeSerializer(serializers.ModelSerializer):
    # granja = GranjaSerializer()
     class Meta:
 		model = Galpone
-		fields = ('id','nombre','numero','fecha_registro',)#falta granja
+		fields = ('id','granja','nombre','numero','fecha_registro',)
 	
     #def create(self, validated_data):
      #   id = validated_data.pop('granja')
@@ -57,7 +57,7 @@ class CorraleSerializer(serializers.ModelSerializer):
 	#galpon = GalponombreSerializer()
 	class Meta:
 		model = Corrale
-		fields = ('id','numero','area_disponible','capacidad','fecha_registro',)#falta galpon
+		fields = ('id','galpon','numero','area_disponible','capacidad','fecha_registro',)
 
 class InmunocastracioneSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
