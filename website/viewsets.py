@@ -18,7 +18,7 @@ class StatusViewSet(viewsets.ModelViewSet):
     serializer_class = StatusSerializer
     queryset = Status.objects.all()
     permission_classes = [permissions.AllowAny,]
-
+'''
 class Granjas_tipoViewSet(viewsets.ModelViewSet):
     serializer_class = Granjas_tipoSerializer
     queryset = Granjas_tipo.objects.all()
@@ -50,7 +50,7 @@ class Inmunocastraciones_extendidaViewSet(viewsets.ModelViewSet):
     serializer_class = Inmunocastraciones_extendidaSerializer
     queryset = Inmunocastraciones_extendida.objects.all()
     permission_classes = [permissions.AllowAny,]
-
+'''
 class Alimentos_fabricaViewSet(viewsets.ModelViewSet):
     serializer_class = Alimentos_fabricaSerializer
     queryset = Alimentos_fabrica.objects.all()
@@ -69,36 +69,6 @@ class Alimentos_tipoViewSet(viewsets.ModelViewSet):
 class AlimentoViewSet(viewsets.ModelViewSet):
     serializer_class = AlimentoSerializer
     queryset = Alimento.objects.all()
-    permission_classes = [permissions.AllowAny,]
-
-class Patologias_grupoViewSet(viewsets.ModelViewSet):
-    serializer_class = Patologias_grupoSerializer
-    queryset = Patologias_grupo.objects.all()
-    permission_classes = [permissions.AllowAny,]
-
-class PatologiasViewSet(viewsets.ModelViewSet):
-    serializer_class = PatologiasSerializer
-    queryset = Patologias.objects.all()
-    permission_classes = [permissions.AllowAny,]
-
-class Medicamentos_laboratorioViewSet(viewsets.ModelViewSet):
-    serializer_class = Medicamentos_laboratorioSerializer
-    queryset = Medicamentos_laboratorio.objects.all()
-    permission_classes = [permissions.AllowAny,]
-
-class Medicamentos_tipoViewSet(viewsets.ModelViewSet):
-    serializer_class = Medicamentos_tipoSerializer
-    queryset = Medicamentos_tipo.objects.all()
-    permission_classes = [permissions.AllowAny,]
-
-class Medicamentos_indicacioneViewSet(viewsets.ModelViewSet):
-    serializer_class = Medicamentos_indicacioneSerializer
-    queryset = Medicamentos_indicacione.objects.all()
-    permission_classes = [permissions.AllowAny,]
-
-class MedicamentoViewSet(viewsets.ModelViewSet):
-    serializer_class = MedicamentoSerializer
-    queryset = Medicamento.objects.all()
     permission_classes = [permissions.AllowAny,]
 
 class Mano_obras_tipoViewSet(viewsets.ModelViewSet):
@@ -141,21 +111,6 @@ class pedidos_alimentos_extendidoViewSet(viewsets.ModelViewSet):
     queryset = pedidos_alimentos_extendido.objects.all()
     permission_classes = [permissions.AllowAny,]
 
-class animales_geneticaViewSet(viewsets.ModelViewSet):
-    serializer_class = animales_geneticaSerializer
-    queryset = animales_genetica.objects.all()
-    permission_classes = [permissions.AllowAny,]
-
-class animaleViewSet(viewsets.ModelViewSet):
-    serializer_class = animaleSerializer
-    queryset = animale.objects.all()
-    permission_classes = [permissions.AllowAny,]
-
-class mortalidadViewSet(viewsets.ModelViewSet):
-    serializer_class = mortalidadSerializer
-    queryset = mortalidad.objects.all()
-    permission_classes = [permissions.AllowAny,]
-
 class Compras_tipoViewSet(viewsets.ModelViewSet):
     serializer_class = Compras_tipoSerializer
     queryset = Compras_tipo.objects.all()
@@ -184,16 +139,6 @@ class Compras_alimentoViewSet(viewsets.ModelViewSet):
 class MedicadoViewSet(viewsets.ModelViewSet):
     serializer_class = MedicadoSerializer
     queryset = Medicado.objects.all()
-    permission_classes = [permissions.AllowAny,]
-
-class Traslados_animaleViewSet(viewsets.ModelViewSet):
-    serializer_class = Traslados_animaleSerializer
-    queryset = Traslados_animale.objects.all()
-    permission_classes = [permissions.AllowAny,]
-    
-class Traslados_alimentoViewSet(viewsets.ModelViewSet):
-    serializer_class = Traslados_alimentoSerializer
-    queryset = Traslados_alimento.objects.all()
     permission_classes = [permissions.AllowAny,]
     
 class ventasViewSet(viewsets.ModelViewSet):
@@ -229,17 +174,7 @@ class Consumos_alimentoViewSet(viewsets.ModelViewSet):
 class Consumos_insumoViewSet(viewsets.ModelViewSet):
     serializer_class = Consumos_insumoSerializer
     queryset = Consumos_insumo.objects.all()
-    permission_classes = [permissions.AllowAny,]    
-
-class Salidas_placeboViewSet(viewsets.ModelViewSet):
-    serializer_class = Salidas_placeboSerializer
-    queryset = Salidas_placebo.objects.all()
-    permission_classes = [permissions.AllowAny,]    
-
-class TratamientosViewSet(viewsets.ModelViewSet):
-    serializer_class = TratamientosSerializer
-    queryset = Tratamientos.objects.all()
-    permission_classes = [permissions.AllowAny,]    
+    permission_classes = [permissions.AllowAny,]       
 
 class Curvas_crecimientoViewSet(viewsets.ModelViewSet):
     serializer_class = Curvas_crecimientoSerializer
@@ -270,3 +205,70 @@ class Recordatorios_extendidoViewSet(viewsets.ModelViewSet):
     serializer_class = Recordatorios_extendidoSerializer
     queryset = Recordatorios_extendido.objects.all()
     permission_classes = [permissions.AllowAny,]
+
+'''
+class Patologias_grupoViewSet(viewsets.ModelViewSet):
+    serializer_class = Patologias_grupoSerializer
+    queryset = Patologias_grupo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class PatologiasViewSet(viewsets.ModelViewSet):
+    serializer_class = PatologiasSerializer
+    queryset = Patologias.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Medicamentos_laboratorioViewSet(viewsets.ModelViewSet):
+    serializer_class = Medicamentos_laboratorioSerializer
+    queryset = Medicamentos_laboratorio.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Medicamentos_tipoViewSet(viewsets.ModelViewSet):
+    serializer_class = Medicamentos_tipoSerializer
+    queryset = Medicamentos_tipo.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Medicamentos_indicacioneViewSet(viewsets.ModelViewSet):
+    serializer_class = Medicamentos_indicacioneSerializer
+    queryset = Medicamentos_indicacione.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class MedicamentoViewSet(viewsets.ModelViewSet):
+    serializer_class = MedicamentoSerializer
+    queryset = Medicamento.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Traslados_animaleViewSet(viewsets.ModelViewSet):
+    serializer_class = Traslados_animaleSerializer
+    queryset = Traslados_animale.objects.all()
+    permission_classes = [permissions.AllowAny,]
+    
+class Traslados_alimentoViewSet(viewsets.ModelViewSet):
+    serializer_class = Traslados_alimentoSerializer
+    queryset = Traslados_alimento.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class Salidas_placeboViewSet(viewsets.ModelViewSet):
+    serializer_class = Salidas_placeboSerializer
+    queryset = Salidas_placebo.objects.all()
+    permission_classes = [permissions.AllowAny,]    
+
+class TratamientosViewSet(viewsets.ModelViewSet):
+    serializer_class = TratamientosSerializer
+    queryset = Tratamientos.objects.all()
+    permission_classes = [permissions.AllowAny,] 
+
+class animales_geneticaViewSet(viewsets.ModelViewSet):
+    serializer_class = animales_geneticaSerializer
+    queryset = animales_genetica.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class animaleViewSet(viewsets.ModelViewSet):
+    serializer_class = animaleSerializer
+    queryset = animale.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
+class mortalidadViewSet(viewsets.ModelViewSet):
+    serializer_class = mortalidadSerializer
+    queryset = mortalidad.objects.all()
+    permission_classes = [permissions.AllowAny,]
+'''
