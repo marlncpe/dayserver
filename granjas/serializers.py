@@ -27,7 +27,7 @@ class GranjaSerializer(serializers.HyperlinkedModelSerializer):
 
 #B clase solo para extraer nombre de la granja
 class GranjanombreSerializer(serializers.HyperlinkedModelSerializer):
-	tipo_granja = serializers.PrimaryKeyRelatedField(read_only=True)
+	#tipo_granja = serializers.PrimaryKeyRelatedField(read_only=True)
 	class Meta:
 		model = Granja
 		fields = ('id','nombre','dueno',)#'tipo_granja',)
