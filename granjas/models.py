@@ -24,13 +24,13 @@ class Granja(models.Model):
         return self.nombre 
 
 class Galpone(models.Model):
-   # granja = models.ForeignKey(Granja)
+    granja = models.ForeignKey(Granja)
     nombre = models.CharField(max_length=255, blank=False)
     numero = models.CharField(max_length=255, blank=False)
     fecha_registro = models.DateField(auto_now_add=True)
 
 class Corrale(models.Model):
-    #galpon = models.ForeignKey(Galpone)
+    galpon = models.ForeignKey(Galpone)
     numero = models.CharField(max_length=255, blank=False)
     area_disponible = models.CharField(max_length=255, blank=False)
     capacidad = models.CharField(max_length=255, blank=False)#nro animales
