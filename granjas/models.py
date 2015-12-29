@@ -29,6 +29,9 @@ class Galpone(models.Model):
     numero = models.CharField(max_length=255, blank=False)
     fecha_registro = models.DateField(auto_now_add=True)
 
+    def __unicode__(self):
+        return self.nombre
+
 class Corrale(models.Model):
     galpon = models.ForeignKey(Galpone)
     numero = models.CharField(max_length=255, blank=False)
@@ -36,14 +39,23 @@ class Corrale(models.Model):
     capacidad = models.CharField(max_length=255, blank=False)#nro animales
     fecha_registro = models.DateField(auto_now_add=True)
 
+    def __unicode__(self):
+        return self.nombre
+
 class Inmunocastracione(models.Model):
     granja = models.ForeignKey(Granja)
     rastro = models.CharField(max_length=11,blank=True)
     periodo_venta = models.CharField(max_length=11,blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
+    def __unicode__(self):
+        return self.nombre
+
 class Inmunocastraciones_extendida(models.Model):
     Inmunocastracion = models.ForeignKey(Inmunocastracione)
     numero = models.CharField(max_length=50,blank=False)
     fecha_aplicacion = models.CharField(max_length=10,blank=True) 
     fecha_registro = models.DateField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.nombre

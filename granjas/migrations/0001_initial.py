@@ -76,4 +76,14 @@ class Migration(migrations.Migration):
             name='tipo_granja',
             field=models.ForeignKey(blank=True, to='granjas.Granjas_tipo', null=True),
         ),
+        migrations.AddField(
+            model_name='galpone',
+            name='granja',
+            field=models.ForeignKey(to='granjas.Granja'),
+        ),
+        migrations.AddField(
+            model_name='corrale',
+            name='galpon',
+            field=models.ForeignKey(to='granjas.Galpone'),
+        ),
     ]
