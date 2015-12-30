@@ -33,7 +33,7 @@ class GranjanombreSerializer(serializers.HyperlinkedModelSerializer):
 		fields = ('id','nombre','dueno',)#'tipo_granja',)
 #End
 	
-class GalponeSerializer(serializers.ModelSerializer):
+class GalponeSerializer(serializers.HyperlinkedModelSerializer):
    # granja = GranjaSerializer()
     class Meta:
 		model = Galpone
