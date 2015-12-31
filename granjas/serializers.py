@@ -53,7 +53,7 @@ class GalponombreSerializer(serializers.HyperlinkedModelSerializer):
 		fields = ('granja','nombre',)
 #End
 
-class CorraleSerializer(serializers.ModelSerializer):
+class CorraleSerializer(serializers.HyperlinkedModelSerializer):
 	#galpon = GalponombreSerializer()
 	class Meta:
 		model = Corrale
