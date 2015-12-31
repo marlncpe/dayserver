@@ -37,7 +37,7 @@ class GalponeSerializer(serializers.HyperlinkedModelSerializer):
    # granja = GranjaSerializer()
     class Meta:
 		model = Galpone
-		fields = ('id','granja','nombre','numero','fecha_registro',)
+		fields = ('id','granja','nombre','area','numero','fecha_registro',)
 	
     #def create(self, validated_data):
      #   id = validated_data.pop('granja')
