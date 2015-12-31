@@ -32,7 +32,7 @@ class CorraleViewSet(viewsets.ModelViewSet):
     queryset = Corrale.objects.all()
     permission_classes = [permissions.AllowAny,]
     filter_backends = (filters.DjangoFilterBackend,filters.SearchFilter,)
-    search_fields = ('galpon__id')
+    search_fields = ('galpon__id',)
 
 class InmunocastracioneViewSet(viewsets.ModelViewSet):
     serializer_class = InmunocastracioneSerializer

@@ -41,7 +41,7 @@ class Corrale(models.Model):
     fecha_registro = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
-        return self.nombre
+        return self.numero
 
 class Inmunocastracione(models.Model):
     granja = models.ForeignKey(Granja)
