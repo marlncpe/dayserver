@@ -26,6 +26,7 @@ class Granja(models.Model):
 class Galpone(models.Model):
     granja = models.ForeignKey(Granja)
     nombre = models.CharField(max_length=255, blank=False)
+    area = models.CharField(max_length=11, blank=False)
     numero = models.CharField(max_length=255, blank=False)
     fecha_registro = models.DateField(auto_now_add=True)
 
