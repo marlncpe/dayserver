@@ -50,13 +50,10 @@ class Inmunocastracione(models.Model):
     fecha_registro = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
-        return self.nombre
+        return self.rastro
 
 class Inmunocastraciones_extendida(models.Model):
     Inmunocastracion = models.ForeignKey(Inmunocastracione)
     numero = models.CharField(max_length=50,blank=False)
     fecha_aplicacion = models.CharField(max_length=10,blank=True) 
     fecha_registro = models.DateField(auto_now_add=True)
-
-    def __unicode__(self):
-        return self.nombre
