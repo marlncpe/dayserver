@@ -38,6 +38,8 @@ class InmunocastracioneViewSet(viewsets.ModelViewSet):
     serializer_class = InmunocastracioneSerializer
     queryset = Inmunocastracione.objects.all()
     permission_classes = [permissions.AllowAny,]
+    filter_backends = (filters.DjangoFilterBackend,filters.SearchFilter,)
+    search_fields = ('rastro','granja__id')
 
 class Inmunocastraciones_extendidaViewSet(viewsets.ModelViewSet):
     serializer_class = Inmunocastraciones_extendidaSerializer
