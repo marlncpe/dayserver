@@ -40,8 +40,9 @@ class InmunocastracioneViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny,]
     filter_backends = (filters.DjangoFilterBackend,filters.SearchFilter,)
     search_fields = ('rastro','granja__id')
-
+'''
 class Inmunocastraciones_extendidaViewSet(viewsets.ModelViewSet):
     serializer_class = Inmunocastraciones_extendidaSerializer
     queryset = Inmunocastraciones_extendida.objects.all()
     permission_classes = [permissions.AllowAny,]
+'''

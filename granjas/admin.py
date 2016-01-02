@@ -18,10 +18,10 @@ class CorraleAdmin(admin.ModelAdmin):
     list_display = ['numero','area_disponible','capacidad','fecha_registro',]
 
 class InmunocastracioneAdmin(admin.ModelAdmin):
-    list_display = ['granja','rastro','periodo_venta','fecha_registro',]
+    list_display = ['granja','rastro','pdosis','sdosis','tdosis','periodo_venta','fecha_registro',]
 
-class Inmunocastraciones_extendidaAdmin(admin.ModelAdmin):
-    list_display = ['Inmunocastracion','numero','fecha_aplicacion','fecha_registro',]
+#class Inmunocastraciones_extendidaAdmin(admin.ModelAdmin):
+#    list_display = ['Inmunocastracion','numero','fecha_aplicacion','fecha_registro',]
 
 
 admin.site.register(Granjas_tipo, Granjas_tipoAdmin)
@@ -29,4 +29,4 @@ admin.site.register(Granja, GranjaAdmin)
 admin.site.register(Galpone, GalponeAdmin)
 admin.site.register(Corrale, CorraleAdmin)
 admin.site.register(Inmunocastracione, InmunocastracioneAdmin)
-admin.site.register(Inmunocastraciones_extendida, Inmunocastraciones_extendidaAdmin)
+#admin.site.register(Inmunocastraciones_extendida, Inmunocastraciones_extendidaAdmin)

@@ -63,10 +63,11 @@ class InmunocastracioneSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
 	class Meta:
 		model = Inmunocastracione
-		fields = ('id','granja','rastro','periodo_venta','fecha_registro',)
-
+		fields = ('id','granja','rastro','pdosis','sdosis','tdosis','periodo_venta','fecha_registro',)
+'''
 class Inmunocastraciones_extendidaSerializer(serializers.HyperlinkedModelSerializer):
 	#Inmunocastracion = InmunocastracioneSerializer()
 	class Meta:
 		model = Inmunocastraciones_extendida
 		fields = ('id','Inmunocastracion','numero','fecha_aplicacion','fecha_registro',)
+'''

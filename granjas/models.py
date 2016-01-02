@@ -46,14 +46,11 @@ class Corrale(models.Model):
 class Inmunocastracione(models.Model):
     granja = models.ForeignKey(Granja)
     rastro = models.CharField(max_length=11,blank=True)
+    pdosis = models.CharField(max_length=11,blank=False)
+    sdosis = models.CharField(max_length=11,blank=True)
+    tdosis = models.CharField(max_length=11, blank=True)
     periodo_venta = models.CharField(max_length=11,blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
         return self.rastro
-
-class Inmunocastraciones_extendida(models.Model):
-    Inmunocastracion = models.ForeignKey(Inmunocastracione)
-    numero = models.CharField(max_length=50,blank=False)
-    fecha_aplicacion = models.CharField(max_length=10,blank=True) 
-    fecha_registro = models.DateField(auto_now_add=True)
