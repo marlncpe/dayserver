@@ -98,6 +98,8 @@ class Traslados_alimento(models.Model):
     referencia = models.CharField(max_length=255, blank=True)
     cantidad = models.CharField(max_length=16, blank=True)
     valor_flete = models.CharField(max_length=16, blank=True)
+    fecha = models.CharField(max_length=15, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
 class Salidas_placebo(models.Model):
     granja = models.ForeignKey(Granja)
