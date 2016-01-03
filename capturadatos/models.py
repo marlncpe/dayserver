@@ -98,6 +98,9 @@ class Traslados_alimento(models.Model):
     valor_flete = models.CharField(max_length=16, blank=True)
 
 class Salidas_placebo(models.Model):
+    granja = models.ForeignKey(Granja)
+    galpon = models.ForeignKey(Galpone)
+    corral = models.ForeignKey(Corrale)
     lote = models.CharField(max_length=255, blank=True)
     num_machos = models.CharField(max_length=255, blank=True)
     num_hembras = models.CharField(max_length=255, blank=True)
