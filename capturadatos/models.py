@@ -88,6 +88,8 @@ class Traslados_animale(models.Model):
     lote_destino = models.CharField(max_length=255, blank=True)
     nro_animales = models.CharField(max_length=255, blank=True)
     causa = models.CharField(max_length=255, blank=True)
+    fecha = models.CharField(max_length=15, blank=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
 class Traslados_alimento(models.Model):
     granja = models.ForeignKey(Granja)
