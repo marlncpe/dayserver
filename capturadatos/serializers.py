@@ -76,10 +76,10 @@ class Traslados_alimentoSerializer(serializers.HyperlinkedModelSerializer):
 		model = Traslados_alimento
 		fields = ('granja','origen','destino','referencia','cantidad','valor_flete',)
 
-class Salidas_placeboSerializer(serializers.ModelSerializer):
+class Salidas_placeboSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Salidas_placebo
-		fields = ('lote','num_machos','num_hembras','peso_total','ubicacion','tipo_salida','destino','vehiculo','cuarentena','precio_total','remision','valor_flete','fecha_registro',)
+		fields = ('granja','galpon','corral','lote','num_machos','num_hembras','peso_total','ubicacion','tipo_salida','destino','vehiculo','cuarentena','precio_total','remision','valor_flete','fecha_registro',)
 
 class TratamientosSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
