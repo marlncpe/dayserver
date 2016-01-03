@@ -65,6 +65,8 @@ class animaleViewSet(viewsets.ModelViewSet):
     serializer_class = animaleSerializer
     queryset = animale.objects.all()
     permission_classes = [permissions.AllowAny,]
+    filter_backends = (filters.DjangoFilterBackend,filters.SearchFilter,)
+    search_fields = ('corral__id',)
 
 class mortalidadViewSet(viewsets.ModelViewSet):
     serializer_class = mortalidadSerializer
