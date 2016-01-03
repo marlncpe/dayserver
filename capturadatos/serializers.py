@@ -68,7 +68,7 @@ class Traslados_animaleSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
 	class Meta:
 		model = Traslados_animale
-		fields = ('granja','lote_origen','lote_destino','nro_animales','causa',)
+		fields = ('granja','lote_origen','lote_destino','nro_animales','causa','fecha','fecha_registro',)
 
 class Traslados_alimentoSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
