@@ -78,7 +78,7 @@ class Medicamentos_tipo(models.Model):
         
 class Medicamento(models.Model):
     nombre = models.CharField(max_length=255,blank=False)
-    Laboratorio = models.ForeignKey(Medicamentos_laboratorio)
+    laboratorio = models.ForeignKey(Medicamentos_laboratorio)
     registro_ica = models.CharField(max_length=255, blank=False)
     presentacion = models.CharField(max_length=255, blank=True)
     tipo = models.ForeignKey(Medicamentos_tipo)
