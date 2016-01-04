@@ -23,7 +23,7 @@ class Medicamentos_tipoAdmin(admin.ModelAdmin):
     list_display = ['nombre','descripcion','fecha_registro',]
 
 class MedicamentoAdmin(admin.ModelAdmin):
-    list_display = ['nombre','Laboratorio','registro_ica','presentacion','tipo','status','fecha_registro',]
+    list_display = ['nombre','laboratorio','registro_ica','presentacion','tipo','status','fecha_registro',]
 
 class Medicamentos_indicacioneAdmin(admin.ModelAdmin):
     list_display = ['medicamento','indicacion','descripcion','fecha_registro',]
