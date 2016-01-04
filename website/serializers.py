@@ -22,22 +22,22 @@ class UsuarioSerializer(serializers.ModelSerializer):
 class StatusSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Status
-		fields = ('nombre', 'descripcion', 'fecha_registro')
+		fields = ('id','nombre', 'descripcion', 'fecha_registro')
 
 class Alimentos_fabricaSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Alimentos_fabrica
-		fields = ('nombre','status','fecha_registro',)
+		fields = ('id','nombre','status','fecha_registro',)
 
 class Alimentos_faseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Alimentos_fase
-		fields = ('nombre','descripcion','fecha_registro',)
+		fields = ('id','nombre','descripcion','fecha_registro',)
 
 class Alimentos_tipoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Alimentos_tipo
-		fields = ('nombre','descripcion','fecha_registro',)
+		fields = ('id','nombre','descripcion','fecha_registro',)
 
 class AlimentoSerializer(serializers.HyperlinkedModelSerializer):
 	#fabrica = Alimentos_fabricaSerializer()
@@ -72,7 +72,7 @@ class InsumoSerializer(serializers.ModelSerializer):
 class Pedidos_tipoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Pedidos_tipo
-		fields = ('nombre','descripcion','fecha_registro',)
+		fields = ('id','nombre','descripcion','fecha_registro',)
 
 class PedidoSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
@@ -85,18 +85,18 @@ class pedidos_medicamentos_extendidoSerializer(serializers.HyperlinkedModelSeria
 	#pedido = PedidoSerializer() 
 	class Meta:
 		model = pedidos_medicamentos_extendido
-		fields = ('pedido','producto','Cantidad','valor',)
+		fields = ('id','pedido','producto','Cantidad','valor',)
 
 class pedidos_alimentos_extendidoSerializer(serializers.HyperlinkedModelSerializer):
 	#pedido = PedidoSerializer() 
 	class Meta:
 		model = pedidos_alimentos_extendido
-		fields = ('pedido','referencia','medicado','dosis','fecha_recogida','observaciones','valor',)
+		fields = ('id','pedido','referencia','medicado','dosis','fecha_recogida','observaciones','valor',)
 
 class Compras_tipoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Compras_tipo
-		fields = ('nombre','descripcion','fecha_registro',)
+		fields = ('id','nombre','descripcion','fecha_registro',)
 
 class CompraSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
@@ -109,19 +109,19 @@ class Compras_insumoSerializer(serializers.HyperlinkedModelSerializer):
 	#compra = CompraSerializer()
 	class Meta:
 		model = Compras_insumo
-		fields = ('compra','producto','cantidad','valor',)
+		fields = ('id','compra','producto','cantidad','valor',)
 
 class Compras_medicamentoSerializer(serializers.HyperlinkedModelSerializer):
 	#compra = CompraSerializer()
 	class Meta:
 		model = Compras_medicamento
-		fields = ('compra','producto','lote','cantidad','valor',)
+		fields = ('id','compra','producto','lote','cantidad','valor',)
 
 class Compras_alimentoSerializer(serializers.HyperlinkedModelSerializer):
 	#compra = CompraSerializer()
 	class Meta:
 		model = Compras_alimento
-		fields = ('compra','referencia','lote','cantidad','valor','medicado','dosis_medicado','valor_medicado',)
+		fields = ('id','compra','referencia','lote','cantidad','valor','medicado','dosis_medicado','valor_medicado',)
 
 class MedicadoSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -132,74 +132,74 @@ class MedicadoSerializer(serializers.ModelSerializer):
 class ventasSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = ventas
-		fields = ('lote','num_machos','num_hembras','tipo','peso','cliente','planta_sacrificio','vehiculo','cuarentena','precio_total','remision','costos_flete','pago','fecha_registro',)
+		fields = ('id','lote','num_machos','num_hembras','tipo','peso','cliente','planta_sacrificio','vehiculo','cuarentena','precio_total','remision','costos_flete','pago','fecha_registro',)
 
 class Costos_gastoSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
 	#Galpon = GalponombreSerializer()
 	class Meta:
 		model = Costos_gasto
-		fields = ('granja','Galpon','lote','descripcion','amortizacion','costos','observaciones','fecha_registro',)
+		fields = ('id','granja','Galpon','lote','descripcion','amortizacion','costos','observaciones','fecha_registro',)
 
 class Consumos_tipoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Consumos_tipo
-		fields = ('nombre','descripcion','fecha_registro',)
+		fields = ('id','nombre','descripcion','fecha_registro',)
 
 class ConsumoSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
 	#tipo = Consumos_tipoSerializer()
 	class Meta:
 		model = Consumo
-		fields = ('granja','lote','tipo','fecha_registro',)
+		fields = ('id','granja','lote','tipo','fecha_registro',)
 
 class Consumos_farmacoSerializer(serializers.HyperlinkedModelSerializer):
 	#consumo = ConsumoSerializer()
 	class Meta:
 		model = Consumos_farmaco
-		fields = ('consumo','producto','cantidad','ubicacion',) 
+		fields = ('id','consumo','producto','cantidad','ubicacion',) 
 
 class Consumos_alimentoSerializer(serializers.HyperlinkedModelSerializer):
 	#consumo = ConsumoSerializer()
 	class Meta:
 		model = Consumos_alimento
-		fields = ('consumo','referencia','cantidad','ubicacion',) 
+		fields = ('id','consumo','referencia','cantidad','ubicacion',) 
 
 class Consumos_insumoSerializer(serializers.HyperlinkedModelSerializer):
 	#consumo = ConsumoSerializer()
 	class Meta:
 		model = Consumos_insumo
-		fields = ('consumo','producto','cantidad','ubicacion',) 
+		fields = ('id','consumo','producto','cantidad','ubicacion',) 
 
 class Curvas_crecimientoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Curvas_crecimiento
-		fields = ('curva','edad','peso','consumo','fecha_registro',) 
+		fields = ('id','curva','edad','peso','consumo','fecha_registro',) 
 
 class Metas_pcSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
 	class Meta:
 		model = Metas_pc
-		fields = ('granja','etapa','peso_inicial','edad_inicial','peso_final','mortalidad','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','fecha_registro',) 
+		fields = ('id','granja','etapa','peso_inicial','edad_inicial','peso_final','mortalidad','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','fecha_registro',) 
 
 class Metas_cebaSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
 	class Meta:
 		model = Metas_ceba
-		fields = ('granja','peso_inicial','edad_inicial','peso_final','mortalidad','descarte','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','costos_produccion','fecha_registro',) 
+		fields = ('id','granja','peso_inicial','edad_inicial','peso_final','mortalidad','descarte','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','costos_produccion','fecha_registro',) 
 
 class Metas_destete_finalizacioneSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
 	class Meta:
 		model = Metas_destete_finalizacione
-		fields = ('granja','peso_inicial','edad_inicial','peso_final','mortalidad','descarte','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','costos_produccion','fecha_registro',) 
+		fields = ('id','granja','peso_inicial','edad_inicial','peso_final','mortalidad','descarte','conversion','ganacia_peso','gdp','densidad','dias_permanencia','consumo_total','consumo_animal_diario','costos_produccion','fecha_registro',) 
 
 class RecordatorioSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Recordatorio
-		fields = ('tipo','fecha_recordatorio','fecha_registro',) 
+		fields = ('id','tipo','fecha_recordatorio','fecha_registro',) 
 
 class Recordatorios_extendidoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Recordatorios_extendido
-		fields = ('nombre','descripcion','fecha_registro',) 
+		fields = ('id','nombre','descripcion','fecha_registro',) 
