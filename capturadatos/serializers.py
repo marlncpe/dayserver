@@ -10,7 +10,7 @@ from granjas.serializers import *
 class Patologias_grupoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Patologias_grupo
-		fields = ('nombre','descripcion','fecha_registro',)
+		fields = ('id','nombre','descripcion','fecha_registro',)
 
 class PatologiasSerializer(serializers.HyperlinkedModelSerializer):
 	#grupo = Patologias_grupoSerializer()
