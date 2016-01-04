@@ -148,6 +148,9 @@ class Pedidos_tipo(models.Model):
     descripcion = models.CharField(max_length=255,blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
+    def __unicode__(self):
+        return self.nombre
+
 class Pedido(models.Model):
     granja = models.ForeignKey(Granja)
     tipo = models.ForeignKey(Pedidos_tipo)
@@ -176,6 +179,9 @@ class Compras_tipo(models.Model):
     nombre = models.CharField(max_length=10,blank=False)
     descripcion = models.CharField(max_length=255,blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.nombre
 
 class Compra(models.Model):
     granja = models.ForeignKey(Granja)
