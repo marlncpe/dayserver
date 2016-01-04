@@ -8,7 +8,7 @@ class Salidas_placeboAdmin(admin.ModelAdmin):
     list_display = ['lote','num_machos','num_hembras','peso_total','ubicacion','tipo_salida','destino','vehiculo','cuarentena','precio_total','remision','valor_flete','fecha_registro',] 
 
 class TratamientosAdmin(admin.ModelAdmin):
-    list_display = ['granja','Galpon','corral','causa','lote','cantidad','edad','medicamento','laboratorio','lote_medicamento','ICA','dosis','duracion','retiro','via_aplicacion','observaciones','responsable','fecha_registro',] 
+    list_display = ['granja','galpon','corral','causa','lote','cantidad','edad','medicamento','laboratorio','lote_medicamento','ica','dosis','duracion','retiro','via_aplicacion','observaciones','responsable','fecha_registro',] 
 
 class Patologias_grupoAdmin(admin.ModelAdmin):
     list_display = ['nombre','descripcion','fecha_registro',]

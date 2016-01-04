@@ -87,5 +87,5 @@ class TratamientosSerializer(serializers.HyperlinkedModelSerializer):
 	#corral = CorraleSerializer()
 	class Meta:
 		model = Tratamientos
-		fields = ('granja','Galpon','corral','causa','lote','cantidad','edad','medicamento','laboratorio','lote_medicamento','ICA','dosis','duracion','retiro','via_aplicacion','observaciones','responsable','fecha_registro',) 
+		fields = ('granja','galpon','corral','causa','lote','cantidad','edad','medicamento','laboratorio','lote_medicamento','ica','dosis','duracion','retiro','via_aplicacion','observaciones','responsable','fecha_registro',) 
 
