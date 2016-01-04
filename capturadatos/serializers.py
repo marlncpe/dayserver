@@ -56,7 +56,7 @@ class MedicamentoSerializer(serializers.HyperlinkedModelSerializer):
 	#tipo = Medicamentos_tipoSerializer()
 	class Meta:
 		model = Medicamento
-		fields = ('id','nombre','Laboratorio','registro_ica','presentacion','tipo','status','fecha_registro',)
+		fields = ('id','nombre','laboratorio','registro_ica','presentacion','tipo','status','fecha_registro',)
 
 class Medicamentos_indicacioneSerializer(serializers.HyperlinkedModelSerializer):
 	#medicamento = MedicamentoSerializer()
