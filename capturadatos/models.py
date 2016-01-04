@@ -121,7 +121,7 @@ class Salidas_placebo(models.Model):
 
 class Tratamientos(models.Model):
     granja = models.ForeignKey(Granja)
-    Galpon = models.ForeignKey(Galpone)
+    galpon = models.ForeignKey(Galpone)
     corral = models.ForeignKey(Corrale)
     causa = models.CharField(max_length=255, blank=True)
     lote = models.CharField(max_length=255, blank=True)
@@ -130,7 +130,7 @@ class Tratamientos(models.Model):
     medicamento = models.CharField(max_length=255, blank=True)
     laboratorio = models.CharField(max_length=255, blank=True)
     lote_medicamento = models.CharField(max_length=255, blank=True)
-    ICA = models.CharField(max_length=255, blank=True)
+    ica = models.CharField(max_length=255, blank=True)
     dosis = models.CharField(max_length=255, blank=True)
     duracion = models.CharField(max_length=255, blank=True)
     retiro = models.CharField(max_length=255, blank=True)
