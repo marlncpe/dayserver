@@ -44,12 +44,12 @@ class mortalidadSerializer(serializers.HyperlinkedModelSerializer):
 class Medicamentos_laboratorioSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Medicamentos_laboratorio
-		fields = ('nombre','descripcion','registro_comercial','fecha_registro',)
+		fields = ('id','nombre','descripcion','registro_comercial','fecha_registro',)
 
 class Medicamentos_tipoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Medicamentos_tipo
-		fields = ('nombre','descripcion','fecha_registro',)
+		fields = ('id','nombre','descripcion','fecha_registro',)
 
 class MedicamentoSerializer(serializers.HyperlinkedModelSerializer):
 	#laboratorio = Medicamentos_laboratorioSerializer()
