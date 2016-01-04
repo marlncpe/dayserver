@@ -28,6 +28,9 @@ class animales_genetica(models.Model):
     descripcion = models.CharField(max_length=255, blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
+    def __unicode__(self):
+            return self.nombre
+
 class animale(models.Model):
     granja = models.ForeignKey(Granja)
     galpon = models.ForeignKey(Galpone)
@@ -62,11 +65,17 @@ class Medicamentos_laboratorio(models.Model):
     registro_comercial = models.CharField(max_length=255,blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
+    def __unicode__(self):
+        return self.nombre
+
 class Medicamentos_tipo(models.Model):
     nombre = models.CharField(max_length=100,blank=False)
     descripcion = models.CharField(max_length=255, blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
+    def __unicode__(self):
+        return self.nombre
+        
 class Medicamento(models.Model):
     nombre = models.CharField(max_length=255,blank=False)
     Laboratorio = models.ForeignKey(Medicamentos_laboratorio)

@@ -9,6 +9,9 @@ class Status(models.Model):
     descripcion = models.CharField(max_length=255, blank=True)
     fecha_registro = models.DateField(auto_now_add=True)
 
+    def __unicode__(self):
+        return self.nombre
+
 class Usuarios_permiso(models.Model):
     nombre = models.CharField(max_length=20)
     fecha_registro = models.DateField(auto_now_add=True)
