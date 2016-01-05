@@ -113,7 +113,10 @@ class pedidos_medicamentos_extendidoAdmin(admin.ModelAdmin):
     list_display = ['pedido','producto','Cantidad','valor',]
 
 class pedidos_alimentos_extendidoAdmin(admin.ModelAdmin):
-    list_display = ['pedido','referencia','medicado','dosis','fecha_recogida','observaciones','valor',]
+    list_display = ['pedido','producto','Cantidad','valor',]
+
+class pedidos_insumos_extendidoAdmin(admin.ModelAdmin):
+    list_display = ['pedido','producto','Cantidad','valor',]
 
 class Compras_tipoAdmin(admin.ModelAdmin):
     list_display = ['nombre','descripcion','fecha_registro',]
@@ -207,6 +210,7 @@ admin.site.register(Pedidos_tipo,Pedidos_tipoAdmin)
 admin.site.register(Pedido,PedidoAdmin)
 admin.site.register(pedidos_medicamentos_extendido,pedidos_medicamentos_extendidoAdmin)
 admin.site.register(pedidos_alimentos_extendido,pedidos_alimentos_extendidoAdmin)
+admin.site.register(pedidos_insumos_extendido,pedidos_insumos_extendidoAdmin)
 
 '''
 Granjas

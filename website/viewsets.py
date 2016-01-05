@@ -111,6 +111,11 @@ class pedidos_alimentos_extendidoViewSet(viewsets.ModelViewSet):
     queryset = pedidos_alimentos_extendido.objects.all()
     permission_classes = [permissions.AllowAny,]
 
+class pedidos_insumos_extendidoViewSet(viewsets.ModelViewSet):
+    serializer_class = pedidos_insumos_extendidoSerializer
+    queryset = pedidos_insumos_extendido.objects.all()
+    permission_classes = [permissions.AllowAny,]
+
 class Compras_tipoViewSet(viewsets.ModelViewSet):
     serializer_class = Compras_tipoSerializer
     queryset = Compras_tipo.objects.all()
