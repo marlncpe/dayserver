@@ -91,7 +91,13 @@ class pedidos_alimentos_extendidoSerializer(serializers.HyperlinkedModelSerializ
 	#pedido = PedidoSerializer() 
 	class Meta:
 		model = pedidos_alimentos_extendido
-		fields = ('id','pedido','referencia','medicado','dosis','fecha_recogida','observaciones','valor',)
+		fields = ('id','pedido','producto','Cantidad','valor',)
+
+class pedidos_insumos_extendidoSerializer(serializers.HyperlinkedModelSerializer):
+	#pedido = PedidoSerializer() 
+	class Meta:
+		model = pedidos_insumos_extendido
+		fields = ('id','pedido','producto','Cantidad','valor',)
 
 class Compras_tipoSerializer(serializers.ModelSerializer):
 	class Meta:

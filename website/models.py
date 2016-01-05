@@ -167,11 +167,14 @@ class pedidos_medicamentos_extendido(models.Model):
 
 class pedidos_alimentos_extendido(models.Model):
     pedido = models.ForeignKey(Pedido)
-    referencia = models.CharField(max_length=255,blank=True)
-    medicado = models.CharField(max_length=255, blank=True)
-    dosis = models.CharField(max_length=15, blank=True)
-    fecha_recogida = models.CharField(max_length=10, blank=False)
-    observaciones = models.CharField(max_length=255, blank=True)
+    producto = models.CharField(max_length=255,blank=False)
+    Cantidad = models.CharField(max_length=12, blank=False)
+    valor = models.CharField(max_length=12, blank=False)
+
+class pedidos_insumos_extendido(models.Model):
+    pedido = models.ForeignKey(Pedido)
+    producto = models.CharField(max_length=255,blank=False)
+    Cantidad = models.CharField(max_length=12, blank=False)
     valor = models.CharField(max_length=12, blank=False)
 
 
