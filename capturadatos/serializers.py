@@ -21,7 +21,7 @@ class PatologiasSerializer(serializers.HyperlinkedModelSerializer):
 class animales_geneticaSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = animales_genetica
-		fields = ('nombre','descripcion','fecha_registro',)
+		fields = ('id','nombre','descripcion','fecha_registro',)
 
 class animaleSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
