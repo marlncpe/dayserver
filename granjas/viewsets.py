@@ -26,6 +26,7 @@ class GalponeViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny,]
     filter_backends = (filters.DjangoFilterBackend,filters.SearchFilter,)
     search_fields = ('=nombre','granja__id')
+    filter_fields =('granja__id',)
 
 class CorraleViewSet(viewsets.ModelViewSet):
     serializer_class = CorraleSerializer
