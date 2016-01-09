@@ -16,6 +16,7 @@ class PatologiasViewSet(viewsets.ModelViewSet):
     queryset = Patologias.objects.all()
     permission_classes = [permissions.AllowAny,]
 
+
 class Medicamentos_laboratorioViewSet(viewsets.ModelViewSet):
     serializer_class = Medicamentos_laboratorioSerializer
     queryset = Medicamentos_laboratorio.objects.all()
@@ -67,6 +68,8 @@ class animaleViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny,]
     filter_backends = (filters.DjangoFilterBackend,filters.SearchFilter,)
     search_fields = ('corral__id',)
+    filter_fields =('granja__id',)
+
 
 class mortalidadViewSet(viewsets.ModelViewSet):
     serializer_class = mortalidadSerializer
