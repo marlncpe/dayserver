@@ -48,3 +48,10 @@ class Inmunocastraciones_extendidaViewSet(viewsets.ModelViewSet):
     queryset = Inmunocastraciones_extendida.objects.all()
     permission_classes = [permissions.AllowAny,]
 '''
+class animales_permitidosViewSet(viewsets.ModelViewSet):
+    serializer_class = animales_permitidosSerializer
+    queryset = animales_permitidos.objects.all()
+    permission_classes = [permissions.AllowAny,]
+    filter_backends = (filters.DjangoFilterBackend,filters.SearchFilter,)
+    search_fields = ('granja__id',)
+    filter_fields('granja__id','dueno__id','encargado_asignacion__id')
