@@ -22,11 +22,14 @@ class InmunocastracioneAdmin(admin.ModelAdmin):
 
 #class Inmunocastraciones_extendidaAdmin(admin.ModelAdmin):
 #    list_display = ['Inmunocastracion','numero','fecha_aplicacion','fecha_registro',]
-
+class animales_permitidosAdmin(admin.ModelAdmin):
+    list_display = ['id','cantidad','granja','dueno','encargado_asignacion','fecha_registro']
 
 admin.site.register(Granjas_tipo, Granjas_tipoAdmin)
 admin.site.register(Granja, GranjaAdmin)
 admin.site.register(Galpone, GalponeAdmin)
 admin.site.register(Corrale, CorraleAdmin)
 admin.site.register(Inmunocastracione, InmunocastracioneAdmin)
+admin.site.register(animales_permitidos, animales_permitidosAdmin)
+
 #admin.site.register(Inmunocastraciones_extendida, Inmunocastraciones_extendidaAdmin)

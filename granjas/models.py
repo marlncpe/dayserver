@@ -56,3 +56,12 @@ class Inmunocastracione(models.Model):
 
     def __unicode__(self):
         return self.rastro
+
+class animales_permitidos(models.Model):
+    cantidad = models.CharField(max_length=11,blank=True)
+    granja = models.ForeignKey(Granja)
+    dueno = models.ForeignKey(settings.AUTH_USER_MODEL)
+    encargado_asignacion = models.ForeignKey(settings.AUTH_USER_MODEL)
+    fecha_registro = models.DateField(auto_now_add=True)
+
+    
