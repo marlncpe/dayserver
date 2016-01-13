@@ -72,8 +72,8 @@ class Inmunocastraciones_extendidaSerializer(serializers.HyperlinkedModelSeriali
 		fields = ('id','Inmunocastracion','numero','fecha_aplicacion','fecha_registro',)
 '''
 
-class animales_permitidosSerializer(serializers.HyperlinkedModelSerializer):
+class animales_adminSerializer(serializers.HyperlinkedModelSerializer):
 	#granja = GranjanombreSerializer()
 	class Meta:
-		model = animales_permitidos
-		fields = ('id','cantidad','granja','dueno','encargado_asignacion','fecha_registro')
+		model = animales_admin
+		fields = ('id','cantidad','granja','dueno','fecha_registro')
