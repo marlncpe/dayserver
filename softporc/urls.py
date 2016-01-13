@@ -74,6 +74,7 @@ url(r'^token-auth/$','rest_framework.authtoken.views.obtain_auth_token'),
 url(r'^api/user', LoginView.as_view()),
 url(r'^oauth2/', include('provider.oauth2.urls', namespace='oauth2')),
 url(r'^admin/', include(admin.site.urls)),
-url(r'^rest-auth/', include('rest_auth.urls'))
+url(r'^rest-auth/', include('rest_auth.urls')),
+url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
 
 )
