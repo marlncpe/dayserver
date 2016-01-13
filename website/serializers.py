@@ -11,7 +11,6 @@ class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'first_name', 'last_name', 'email','username','password')
-        permission_classes = (IsAdminUser,)
 
     def create(self, validated_data):
         user = User(email=validated_data('email'), username=validated_data('username'))
