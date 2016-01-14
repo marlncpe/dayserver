@@ -125,6 +125,7 @@ class Mano_obra(models.Model):
     valor_total = models.CharField(max_length=11 ,blank=False)
 
 class personal(models.Model):#pendiente con esta tabla me parece q es redundante
+    granja = models.ForeignKey(Granja)
     nombres = models.CharField(max_length=60, blank=False)
     apellidos = models.CharField(max_length=60, blank=False)
     siglas = models.CharField(max_length=4, blank=True)
@@ -134,7 +135,8 @@ class personal(models.Model):#pendiente con esta tabla me parece q es redundante
     status = models.ForeignKey(Status)
     eps = models.CharField(max_length=255, blank=True)
     contacto = models.CharField(max_length=16, blank=True)
-
+    dueno = models.OneToOneField(settings.AUTH_USER_MODEL)
+    
 class Insumo(models.Model):
     descripcion = models.CharField(max_length=255, blank=False)
     Marca = models.CharField(max_length=50, blank=True)
