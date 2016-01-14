@@ -1,0 +1,5 @@
+*.pyc
+logos_empresas/*.*
+mapas_empresas/*.*
+foto_perfil/*.*
+softporc/settings.py
