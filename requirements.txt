@@ -11,7 +11,7 @@ django-easyregistration==0.1
 django-forms-bootstrap==3.0.1
 django-oauth2-provider==0.2.6.1
 djangorestframework==3.0.2
-html5lib==0.999
+html5lib==0.999999999
 httpie==0.8.0
 httplib2==0.8
 lxml==3.3.3
